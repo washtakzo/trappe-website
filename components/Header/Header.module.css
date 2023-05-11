@@ -3,8 +3,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 24px;
+  padding: 16px;
   z-index: 4;
+  border-bottom: 1px #ccc solid;
 }
 
 .header > div:first-child {
@@ -12,6 +13,20 @@
   justify-content: center;
   align-items: center;
   z-index: 6;
+}
+
+.header > div:first-child:hover {
+  cursor: pointer;
+}
+
+.header h2 {
+  font-size: medium;
+}
+
+.logo-container {
+  position: relative;
+  width: 36px;
+  height: 36px;
 }
 
 .link-container {
@@ -34,9 +49,27 @@
 
 .burger-btn {
   display: flex;
+  transition: all 0.2s ease-in;
+}
+
+.burger-btn:hover {
+  transform: translateY(-2px);
 }
 
 @media screen and (min-width: 1024px) {
+  .header {
+    padding: 12px;
+  }
+
+  .header h2 {
+    font-size: 1.4rem;
+  }
+
+  .logo-container {
+    width: 42px;
+    height: 42px;
+  }
+
   .link-container {
     width: 280px;
     display: flex;
@@ -54,18 +87,18 @@
   .link-container {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: start;
     position: absolute;
-    height: 36vh;
+    height: 28vh;
     width: 100%;
     background-color: rgb(255, 255, 255);
     border-bottom: solid 1px #ccc;
-    top: -36vh;
+    top: -28vh;
     left: 0;
     right: 0;
     margin: 0;
     padding: 24px;
-    padding-bottom: 48px;
+    padding-top: 72px;
     transition: all 0.3s ease-in-out;
   }
   .link-container > li {

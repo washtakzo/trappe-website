@@ -1,10 +1,12 @@
 .cart {
   position: relative;
   width: 26px;
+  transition: all 0.3s ease-in;
 }
 
 .cart:hover {
   cursor: pointer;
+  transform: scale(105%);
 }
 
 .cart::after {

@@ -20,7 +20,9 @@ function Header() {
   return (
     <header className={styles.header}>
       <div>
-        <Image src={logo} alt="logo" width={48} height={48} />
+        <div className={styles["logo-container"]}>
+          <Image src={logo} alt="logo" fill />
+        </div>
         <h2>Trappe Expert</h2>
       </div>
       <ul className={linkContainerStyle}>
