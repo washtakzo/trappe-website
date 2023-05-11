@@ -1,0 +1,76 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  z-index: 4;
+}
+
+.header > div:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 6;
+}
+
+.link-container {
+  list-style: none;
+  display: none;
+}
+
+.link-container > li > a {
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+.header > div:last-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 92px;
+  z-index: 6;
+}
+
+.burger-btn {
+  display: flex;
+}
+
+@media screen and (min-width: 1024px) {
+  .link-container {
+    width: 280px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .burger-btn {
+    display: none;
+  }
+  .header > div:last-child {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .link-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    height: 44vh;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border-bottom: solid 1px #ccc;
+    top: -44vh;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 24px;
+    transition: all 0.5s ease-in-out;
+  }
+  .link-container > li {
+    margin: 8px 0;
+  }
+  .open {
+    top: 0vh;
+  }
+}
