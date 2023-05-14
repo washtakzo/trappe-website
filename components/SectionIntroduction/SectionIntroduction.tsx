@@ -22,7 +22,9 @@ const SectionIntroduction = () => {
         </div>
 
         <div className={styles["buttons-container"]}>
-          <CustomButton>Buy template</CustomButton>
+          <CustomButton className="background-secondary text-primary">
+            Buy templatez
+          </CustomButton>
           <CustomButton className={styles["secondary-button"]}>
             Explore all pages
           </CustomButton>

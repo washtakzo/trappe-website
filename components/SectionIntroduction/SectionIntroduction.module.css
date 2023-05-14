@@ -19,19 +19,18 @@
 
 .info-container p {
   font-weight: 600;
-  color: #797373;
+  color: hsl(var(--color-secondary) / 0.6);
 }
 
 .secondary-button {
   font-weight: normal !important;
-  background-color: white !important;
-  color: black !important;
+  background-color: hsl(var(--color-primary)) !important;
+  color: hsl(var(--color-secondary)) !important;
 }
 
 .image-container {
   width: 100%;
   position: relative;
-  background-color: rgba(215, 157, 157, 0.545);
   flex: 1.2;
 }
 
