@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header/Header";
 import SectionIntroduction from "../components/SectionIntroduction/SectionIntroduction";
+import SectionMainProducts from "../components/SectionMainProducts/SectionMainProducts";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <main>
         <Header />
         <SectionIntroduction />
+        <SectionMainProducts />
       </main>
     </div>
   );

@@ -166,3 +166,49 @@ body {
 .text-third-900 {
   color: hsl(var(--color-third) / 0.9);
 }
+
+/* specific class */
+.section-title {
+  margin: 1rem 0;
+  font-size: 1.4rem;
+  text-align: center;
+  color: hsl(var(--color-secondary));
+}
+.section-sub-title {
+  text-align: center;
+  color: hsl(var(--color-secondary) / 0.6);
+  font-weight: 600;
+}
+
+/*sm': '640px',*/
+@media (min-width: 640px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .section-sub-title {
+    font-size: 1.2rem;
+  }
+}
+
+/*'md': '768px',*/
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+    margin: 1.4rem 0;
+  }
+  .section-sub-title {
+    font-size: 1.4rem;
+  }
+}
+
+/*'lg': '1024px',*/
+@media (min-width: 1024px) {
+}
+
+/*'xl': '1280px',*/
+@media (min-width: 1280px) {
+}
+
+/*'2xl': '1536px',*/
+@media (min-width: 1536px) {
+}
