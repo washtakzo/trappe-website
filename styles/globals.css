@@ -22,7 +22,7 @@ body {
   color: hsl(var(--color-secondary));
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -30,7 +30,7 @@ body {
     color: hsl(var(--color-primary));
     background: hsl(var(--color-secondary));
   }
-}
+} */
 
 /* Utility class */
 :root {
