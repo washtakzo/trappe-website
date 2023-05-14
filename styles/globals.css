@@ -12,7 +12,14 @@ a {
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: hsl(var(--color-primary));
+  color: hsl(var(--color-secondary));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +27,188 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: hsl(var(--color-primary));
+    background: hsl(var(--color-secondary));
   }
+}
+
+/* Utility class */
+:root {
+  --color-primary: 0 0% 100%;
+  --color-secondary: 210 11% 15%;
+  --color-third: 4 82% 67%;
+}
+
+.background-primary {
+  background-color: hsl(var(--color-primary));
+}
+.background-primary-100 {
+  background-color: hsl(var(--color-primary) / 0.1);
+}
+.background-primary-200 {
+  background-color: hsl(var(--color-primary) / 0.2);
+}
+.background-primary-400 {
+  background-color: hsl(var(--color-primary) / 0.4);
+}
+.background-primary-600 {
+  background-color: hsl(var(--color-primary) / 0.6);
+}
+.background-primary-800 {
+  background-color: hsl(var(--color-primary) / 0.8);
+}
+.background-primary-900 {
+  background-color: hsl(var(--color-primary) / 0.9);
+}
+.background-secondary {
+  background-color: hsl(var(--color-secondary));
+}
+.background-secondary-100 {
+  background-color: hsl(var(--color-secondary) / 0.1);
+}
+.background-secondary-200 {
+  background-color: hsl(var(--color-secondary) / 0.2);
+}
+.background-secondary-400 {
+  background-color: hsl(var(--color-secondary) / 0.4);
+}
+.background-secondary-600 {
+  background-color: hsl(var(--color-secondary) / 0.6);
+}
+.background-secondary-800 {
+  background-color: hsl(var(--color-secondary) / 0.8);
+}
+.background-secondary-900 {
+  background-color: hsl(var(--color-secondary) / 0.9);
+}
+.background-third {
+  background-color: hsl(var(--color-third));
+}
+.background-third-100 {
+  background-color: hsl(var(--color-third) / 0.1);
+}
+.background-third-200 {
+  background-color: hsl(var(--color-third) / 0.2);
+}
+.background-third-400 {
+  background-color: hsl(var(--color-third) / 0.4);
+}
+.background-third-600 {
+  background-color: hsl(var(--color-third) / 0.6);
+}
+.background-third-800 {
+  background-color: hsl(var(--color-third) / 0.8);
+}
+.background-third-900 {
+  background-color: hsl(var(--color-third) / 0.9);
+}
+
+.text-primary {
+  color: hsl(var(--color-primary));
+}
+.text-primary-100 {
+  color: hsl(var(--color-primary) / 0.1);
+}
+.text-primary-200 {
+  color: hsl(var(--color-primary) / 0.2);
+}
+.text-primary-400 {
+  color: hsl(var(--color-primary) / 0.4);
+}
+.text-primary-600 {
+  color: hsl(var(--color-primary) / 0.6);
+}
+.text-primary-800 {
+  color: hsl(var(--color-primary) / 0.8);
+}
+.text-primary-900 {
+  color: hsl(var(--color-primary) / 0.9);
+}
+.text-secondary {
+  color: hsl(var(--color-secondary));
+}
+.text-secondary-100 {
+  color: hsl(var(--color-secondary) / 0.1);
+}
+.text-secondary-200 {
+  color: hsl(var(--color-secondary) / 0.2);
+}
+.text-secondary-400 {
+  color: hsl(var(--color-secondary) / 0.4);
+}
+.text-secondary-600 {
+  color: hsl(var(--color-secondary) / 0.6);
+}
+.text-secondary-800 {
+  color: hsl(var(--color-secondary) / 0.8);
+}
+.text-secondary-900 {
+  color: hsl(var(--color-secondary) / 0.9);
+}
+.text-third {
+  color: hsl(var(--color-third));
+}
+.text-third-100 {
+  color: hsl(var(--color-third) / 0.1);
+}
+.text-third-200 {
+  color: hsl(var(--color-third) / 0.2);
+}
+.text-third-400 {
+  color: hsl(var(--color-third) / 0.4);
+}
+.text-third-600 {
+  color: hsl(var(--color-third) / 0.6);
+}
+.text-third-800 {
+  color: hsl(var(--color-third) / 0.8);
+}
+.text-third-900 {
+  color: hsl(var(--color-third) / 0.9);
+}
+
+/* specific class */
+.section-title {
+  margin: 1rem 0;
+  font-size: 1.4rem;
+  text-align: center;
+  color: hsl(var(--color-secondary));
+}
+.section-sub-title {
+  text-align: center;
+  color: hsl(var(--color-secondary) / 0.6);
+  font-weight: 600;
+}
+
+/*sm': '640px',*/
+@media (min-width: 640px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .section-sub-title {
+    font-size: 1.2rem;
+  }
+}
+
+/*'md': '768px',*/
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+    margin: 1.4rem 0;
+  }
+  .section-sub-title {
+    font-size: 1.4rem;
+  }
+}
+
+/*'lg': '1024px',*/
+@media (min-width: 1024px) {
+}
+
+/*'xl': '1280px',*/
+@media (min-width: 1280px) {
+}
+
+/*'2xl': '1536px',*/
+@media (min-width: 1536px) {
 }

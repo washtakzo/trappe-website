@@ -1,15 +1,17 @@
 .cart {
   position: relative;
   width: 26px;
+  transition: all 0.3s ease-in;
 }
 
 .cart:hover {
   cursor: pointer;
+  transform: scale(105%);
 }
 
 .cart::after {
   content: attr(content);
-  background-color: rgb(79, 74, 74);
+  background-color: hsl(var(--color-secondary));
   position: absolute;
   right: -30%;
   top: -40%;
@@ -21,7 +23,7 @@
   height: 24px;
   font-size: small;
   font-weight: 600;
-  color: aliceblue;
+  color: hsl(var(--color-primary));
 }
 
 .no-after::after {

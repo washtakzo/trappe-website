@@ -1,0 +1,39 @@
+.button {
+  border-radius: 32px;
+  padding: 20px 32px;
+  font-weight: bold;
+  border: solid 1px hsl(var(--color-secondary) / 0.4);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  min-width: 80%;
+  margin: 6px 0;
+}
+
+.button:hover {
+  opacity: 75%;
+  transform: translateY(-4px);
+}
+
+/*sm': '640px',*/
+@media (min-width: 640px) {
+  .button {
+    min-width: 0px;
+  }
+}
+
+/*'md': '768px',*/
+@media (min-width: 768px) {
+}
+
+/*'lg': '1024px',*/
+@media (min-width: 1024px) {
+}
+
+/*'xl': '1280px',*/
+@media (min-width: 1280px) {
+}
+
+/*'2xl': '1536px',*/
+@media (min-width: 1536px) {
+}
