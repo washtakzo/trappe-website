@@ -1,19 +1,29 @@
 .container {
   width: 80%;
   margin: auto;
-  background-color: red;
 }
 
 /*sm': '640px',*/
 @media (min-width: 640px) {
+  .container {
+    width: 70%;
+    max-width: 640px;
+  }
 }
 
 /*'md': '768px',*/
 @media (min-width: 768px) {
+  .container {
+    width: 80%;
+    max-width: none;
+  }
 }
 
 /*'lg': '1024px',*/
 @media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+  }
 }
 
 /*'xl': '1280px',*/

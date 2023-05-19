@@ -14,9 +14,10 @@ const SectionMainProducts = () => {
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo
           obcaecati beatae fugiat modi, blanditiis quo.
         </p>
-        <ProductOverview />
-        <ProductOverview />
-        <ProductOverview />
+        <ProductOverview position={0} />
+        <ProductOverview position={1} />
+        <ProductOverview position={2} />
+        <ProductOverview position={3} />
         <div style={{ height: "100vh" }}>{/* TODELETE: */}</div>
       </div>
     </section>
