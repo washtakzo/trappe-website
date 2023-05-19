@@ -3,6 +3,7 @@ import Image from "next/image";
 import Header from "../components/Header/Header";
 import SectionIntroduction from "../components/SectionIntroduction/SectionIntroduction";
 import SectionMainProducts from "../components/SectionMainProducts/SectionMainProducts";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,8 @@ export default function Home() {
         <SectionIntroduction />
         <SectionMainProducts />
       </main>
+
+      <Footer />
     </div>
   );
 }

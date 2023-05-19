@@ -18,7 +18,6 @@ const SectionMainProducts = () => {
         <ProductOverview position={1} />
         <ProductOverview position={2} />
         <ProductOverview position={3} />
-        <div style={{ height: "100vh" }}>{/* TODELETE: */}</div>
       </div>
     </section>
   );
