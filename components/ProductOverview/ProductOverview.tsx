@@ -33,7 +33,12 @@ const ProductOverview = ({ position }: Props) => {
         </CustomButton>
       </div>
       <div className={styles["image-container"]}>
-        <Image src={imageExemple} fill alt="trappe image" />
+        <Image
+          src={imageExemple}
+          fill
+          alt="trappe image"
+          className={styles.image}
+        />
       </div>
     </div>
   );
