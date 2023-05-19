@@ -3,6 +3,8 @@ import Image from "next/image";
 import Header from "../components/Header/Header";
 import SectionIntroduction from "../components/SectionIntroduction/SectionIntroduction";
 import SectionMainProducts from "../components/SectionMainProducts/SectionMainProducts";
+import Footer from "../components/Footer/Footer";
+import SectionLivraison from "../components/SectionLivraison/SectionLivraison";
 
 export default function Home() {
   return (
@@ -17,7 +19,12 @@ export default function Home() {
         <Header />
         <SectionIntroduction />
         <SectionMainProducts />
+        <SectionLivraison />
+        <section>Section - Installation par nos équipte</section>
       </main>
+
+      <Footer />
+      <div style={{ height: "100vh", backgroundColor: "grey" }}></div>
     </div>
   );
 }

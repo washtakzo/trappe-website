@@ -14,6 +14,10 @@
   overflow: hidden;
 }
 
+.image {
+  object-fit: cover;
+}
+
 .text-container {
   display: flex;
   flex-direction: column;
