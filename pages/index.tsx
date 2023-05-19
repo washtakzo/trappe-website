@@ -18,6 +18,8 @@ export default function Home() {
         <Header />
         <SectionIntroduction />
         <SectionMainProducts />
+        <section>Section - Mode de livraison</section>
+        <section>Section - Installation par nos équipte</section>
       </main>
 
       <Footer />

@@ -1,0 +1,36 @@
+.footer {
+  padding: 1rem 2rem;
+}
+
+.sections-container {
+}
+
+.mini-title {
+  margin-bottom: 0.6rem;
+}
+
+.link-container {
+  padding: 1rem 0;
+  border-bottom: solid 1px hsl(var(--color-primary) / 0.4);
+}
+
+.link-container__link {
+  cursor: pointer;
+  margin: 0.6rem 0;
+  transition: all 0.2s ease-out;
+}
+
+.link-container__link:hover {
+  opacity: 80%;
+  transform-origin: left top;
+  transform: scale(1.05);
+}
+
+.legale-container {
+  padding: 1rem 0;
+  border-bottom: solid 1px hsl(var(--color-primary) / 0.4);
+}
+
+.promo-container {
+  padding: 1rem 0;
+}
