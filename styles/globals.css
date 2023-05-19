@@ -175,7 +175,7 @@ body {
 
 /* specific class */
 .section-title {
-  margin: 1rem 0;
+  padding: 1rem 0;
   font-size: 1.4rem;
   text-align: center;
   color: hsl(var(--color-secondary));
