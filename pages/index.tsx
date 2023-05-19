@@ -23,6 +23,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <div style={{ height: "100vh", backgroundColor: "grey" }}></div>
     </div>
   );
 }
