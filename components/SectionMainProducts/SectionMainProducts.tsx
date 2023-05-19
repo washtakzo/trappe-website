@@ -8,7 +8,6 @@ const SectionMainProducts = () => {
       <ProductOverview position={0} />
       <ProductOverview position={1} />
       <ProductOverview position={2} />
-      <ProductOverview position={3} />
     </Section>
   );
 };
