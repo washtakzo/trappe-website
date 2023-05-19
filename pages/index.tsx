@@ -4,6 +4,7 @@ import Header from "../components/Header/Header";
 import SectionIntroduction from "../components/SectionIntroduction/SectionIntroduction";
 import SectionMainProducts from "../components/SectionMainProducts/SectionMainProducts";
 import Footer from "../components/Footer/Footer";
+import SectionLivraison from "../components/SectionLivraison/SectionLivraison";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
         <Header />
         <SectionIntroduction />
         <SectionMainProducts />
-        <section>Section - Mode de livraison</section>
+        <SectionLivraison />
         <section>Section - Installation par nos équipte</section>
       </main>
 

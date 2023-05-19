@@ -63,6 +63,9 @@ body {
 .background-secondary {
   background-color: hsl(var(--color-secondary));
 }
+.background-secondary-50 {
+  background-color: hsl(var(--color-secondary) / 0.05);
+}
 .background-secondary-100 {
   background-color: hsl(var(--color-secondary) / 0.1);
 }
@@ -126,6 +129,9 @@ body {
 }
 .text-secondary {
   color: hsl(var(--color-secondary));
+}
+.text-secondary-50 {
+  color: hsl(var(--color-secondary) / 0.05);
 }
 .text-secondary-100 {
   color: hsl(var(--color-secondary) / 0.1);
