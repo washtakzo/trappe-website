@@ -16,6 +16,11 @@ const SectionInstallation = () => {
         <div className={styles["service-overview"]}>
           <div className={styles["text-container"]}>
             <h3>Devis gratuit & rapide</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, incidunt ad. Corrupti veniam officia doloremque at
+              nulla eius.
+            </p>
           </div>
           <div className={styles["image-container"]}>
             <Image
@@ -29,6 +34,11 @@ const SectionInstallation = () => {
         <div className={styles["service-overview"]}>
           <div className={styles["text-container"]}>
             <h3>Installation dans toute l&apos;ile-de-france</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, incidunt ad. Corrupti veniam officia doloremque at
+              nulla eius.
+            </p>
           </div>
           <div className={styles["image-container"]}>
             <Image

@@ -3,6 +3,7 @@ import styles from "./SectionIntroduction.module.css";
 import Image from "next/image";
 import CustomButton from "../UI/CustomButton/CustomButton";
 import illustration from "../../assets/illu1.jpg";
+import illustrationSmile from "../../assets/worker_smile.jpg";
 
 const SectionIntroduction = () => {
   return (
@@ -36,7 +37,7 @@ const SectionIntroduction = () => {
       </div>
       <div className={styles["image-container"]}>
         <Image
-          src={illustration}
+          src={illustrationSmile}
           alt="illustration"
           fill
           className={styles.image}

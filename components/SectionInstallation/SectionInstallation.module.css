@@ -7,8 +7,9 @@
 .service-overview {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin: 4rem 0;
+  gap: 2rem;
 }
 
 .text-container {
@@ -19,6 +20,11 @@
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: 2rem;
+}
+
+.text-container p {
+  text-align: center;
+  font-size: 1rem;
 }
 
 .image-container {
@@ -38,6 +44,13 @@
 
 /*'md': '768px',*/
 @media (min-width: 768px) {
+  .text-container h3 {
+    font-size: 1.4rem;
+  }
+
+  .text-container p {
+    font-size: 1.2rem;
+  }
 }
 
 /*'lg': '1024px',*/
@@ -48,10 +61,24 @@
   .image-container {
     aspect-ratio: 1/1;
   }
+  .text-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .text-container p {
+    font-size: 1.3rem;
+  }
 }
 
 /*'xl': '1280px',*/
 @media (min-width: 1280px) {
+  .text-container h3 {
+    font-size: 1.6rem;
+  }
+
+  .text-container p {
+    font-size: 1.4rem;
+  }
 }
 
 /*'2xl': '1536px',*/
