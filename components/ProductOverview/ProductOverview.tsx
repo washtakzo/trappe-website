@@ -1,15 +1,16 @@
 import React from "react";
 
 import styles from "./ProductOverview.module.css";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import imageExemple from "../../assets/illu1.jpg";
 import CustomButton from "../UI/CustomButton/CustomButton";
 
 type Props = {
   position: number;
+  image: StaticImageData;
 };
 
-const ProductOverview = ({ position }: Props) => {
+const ProductOverview = ({ position, image }: Props) => {
   const positionStyle = position % 2 == 0 ? "row" : "row-reverse";
   return (
     <div
@@ -33,12 +34,7 @@ const ProductOverview = ({ position }: Props) => {
         </CustomButton>
       </div>
       <div className={styles["image-container"]}>
-        <Image
-          src={imageExemple}
-          fill
-          alt="trappe image"
-          className={styles.image}
-        />
+        <Image src={image} fill alt="trappe image" className={styles.image} />
       </div>
     </div>
   );
