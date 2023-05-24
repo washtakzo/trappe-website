@@ -4,24 +4,42 @@ import Image from "next/image";
 import CustomButton from "../UI/CustomButton/CustomButton";
 import illustration from "../../assets/illu1.jpg";
 import illustrationSmile from "../../assets/worker_smile.jpg";
+import { GiFrance } from "react-icons/gi";
+import { CiRuler } from "react-icons/ci";
+import { FaFileContract, FaTools } from "react-icons/fa";
 
 const SectionIntroduction = () => {
   return (
     <section className={styles.section}>
       <div className={styles["info-container"]}>
-        <div>
-          <h1>
-            Trappe Expert
-            <br />
-            Vente et pose de trappe
-          </h1>
-          <p>
-            Trappes de qualité allemande
-            <br />
-            Vendu et posées par nos équipes
-          </p>
+        <div className={styles["image-container"]}>
+          <div className={styles["gradient-background"]} />
+          <Image
+            src={illustrationSmile}
+            alt="illustration"
+            fill
+            className={styles.image}
+          />
         </div>
-
+        <h1 className="text-primary">Trappe Expert</h1>
+        <div className={styles.advantages}>
+          <div>
+            <GiFrance className={styles.icon} />
+            <p>Livraison partout en France</p>
+          </div>
+          <div>
+            <CiRuler className={styles.icon} />
+            <p>Trappe sur mesure</p>
+          </div>
+          <div>
+            <FaFileContract className={styles.icon} />
+            <p>Devis instantanné</p>
+          </div>
+          <div>
+            <FaTools className={styles.icon} />
+            <p>Pose par nos équipes</p>
+          </div>
+        </div>
         <div className={styles["buttons-container"]}>
           <CustomButton
             className={styles["button"] + " background-secondary text-primary"}
@@ -34,14 +52,6 @@ const SectionIntroduction = () => {
             Explore all pages
           </CustomButton>
         </div>
-      </div>
-      <div className={styles["image-container"]}>
-        <Image
-          src={illustrationSmile}
-          alt="illustration"
-          fill
-          className={styles.image}
-        />
       </div>
     </section>
   );
