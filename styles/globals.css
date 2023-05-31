@@ -200,8 +200,8 @@ body {
 /*'md': '768px',*/
 @media (min-width: 768px) {
   .section-title {
+    padding: 1.4rem 0;
     font-size: 1.8rem;
-    margin: 1.4rem 0;
   }
   .section-sub-title {
     font-size: 1.4rem;
