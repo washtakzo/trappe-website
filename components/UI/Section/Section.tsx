@@ -6,15 +6,22 @@ type Props = {
   subTitle?: string;
   children?: React.ReactNode;
   className?: string;
+  contentClassName?: string;
 };
 
-const Section = ({ children, title, subTitle, className }: Props) => {
+const Section = ({
+  children,
+  title,
+  subTitle,
+  className,
+  contentClassName,
+}: Props) => {
   return (
     <section className={className}>
       <div className={styles.container}>
         <h2 className="section-title">{title}</h2>
         {subTitle && <p className="section-sub-title">{subTitle}</p>}
-        {children}
+        <div className={contentClassName}>{children}</div>
       </div>
     </section>
   );
