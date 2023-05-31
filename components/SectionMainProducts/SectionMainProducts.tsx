@@ -13,9 +13,17 @@ const SectionMainProducts = () => {
       title="What is included in Coworking Z"
       contentClassName={styles.content}
     >
-      <ProductOverview position={0} image={imageProduct1} />
-      <ProductOverview position={1} image={imageProduct2} />
-      <ProductOverview position={2} image={imageProduct3} />
+      <ProductOverview
+        position={0}
+        primaryImage={imageProduct1}
+        secondaryImage={imageProduct2}
+      />
+      <ProductOverview
+        position={1}
+        primaryImage={imageProduct2}
+        secondaryImage={imageProduct3}
+      />
+      <ProductOverview position={2} primaryImage={imageProduct3} />
     </Section>
   );
 };

@@ -26,6 +26,7 @@
 
 .image {
   object-fit: cover;
+  transition: all 0.2s ease-out;
 }
 
 .text-container {

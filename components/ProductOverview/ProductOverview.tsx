@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./ProductOverview.module.css";
 import Image, { StaticImageData } from "next/image";
@@ -7,18 +7,36 @@ import CustomButton from "../UI/CustomButton/CustomButton";
 
 type Props = {
   position: number;
-  image: StaticImageData;
+  primaryImage: StaticImageData;
+  secondaryImage?: StaticImageData;
 };
 
-const ProductOverview = ({ position, image }: Props) => {
+const ProductOverview = ({ position, primaryImage, secondaryImage }: Props) => {
+  const [secondaryImageIsVisible, setSecondaryImageIsVisible] = useState(false);
+
   const positionStyle = position % 2 == 0 ? "row" : "row-reverse";
+
   return (
     <div
       className={styles["product-overview"]}
       style={{ "--position": positionStyle } as React.CSSProperties}
+      onMouseEnter={() => setSecondaryImageIsVisible(true)}
+      onMouseLeave={() => setSecondaryImageIsVisible(false)}
     >
       <div className={styles["image-container"]}>
-        <Image src={image} fill alt="trappe image" className={styles.image} />
+        <Image
+          src={primaryImage}
+          fill
+          alt="trappe image"
+          className={styles.image}
+        />
+        <Image
+          src={secondaryImage || primaryImage}
+          fill
+          alt="trappe image"
+          className={styles.image}
+          style={{ opacity: secondaryImageIsVisible ? "1" : "0" }}
+        />
       </div>
       <div className={styles["text-container"]}>
         <h3 className={styles["text-container__title"]}>Trappe Etanche</h3>
