@@ -17,6 +17,9 @@ const ProductOverview = ({ position, image }: Props) => {
       className={styles["product-overview"]}
       style={{ "--position": positionStyle } as React.CSSProperties}
     >
+      <div className={styles["image-container"]}>
+        <Image src={image} fill alt="trappe image" className={styles.image} />
+      </div>
       <div className={styles["text-container"]}>
         <h3 className={styles["text-container__title"]}>Trappe Etanche</h3>
         <p className={styles["text-container__text"] + " text-secondary-600"}>
@@ -32,9 +35,6 @@ const ProductOverview = ({ position, image }: Props) => {
         >
           See Product
         </CustomButton>
-      </div>
-      <div className={styles["image-container"]}>
-        <Image src={image} fill alt="trappe image" className={styles.image} />
       </div>
     </div>
   );
