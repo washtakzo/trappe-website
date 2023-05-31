@@ -6,6 +6,7 @@ import SectionMainProducts from "../components/SectionMainProducts/SectionMainPr
 import Footer from "../components/Footer/Footer";
 import SectionLivraison from "../components/SectionLivraison/SectionLivraison";
 import SectionInstallation from "../components/SectionInstallation/SectionInstallation";
+import SectionOutilConception from "../components/SectionMainProducts copy/SectionOutilConception";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <SectionIntroduction />
         <SectionMainProducts />
         <SectionLivraison />
+        <SectionOutilConception />
         <SectionInstallation />
       </main>
       <Footer />
