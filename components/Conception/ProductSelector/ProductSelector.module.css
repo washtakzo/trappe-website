@@ -50,6 +50,9 @@
 
 /*'md': '768px',*/
 @media (min-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
 }
 
 /*'lg': '1024px',*/
