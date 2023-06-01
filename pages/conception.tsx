@@ -10,8 +10,20 @@ const conception = () => {
   return (
     <main>
       <Header />
-      <ProductSelector />
-      <ProductDescription />
+      <ProductSelector
+        title="Selectionnez une trappe"
+        customizableProducts={[
+          { title: "trappe1", image: "product3.jpg" },
+          { title: "trappe22", image: "product1.jpg" },
+          { title: "trappe33", image: "product2.jpg" },
+          { title: "trappe44", image: "product2.jpg" },
+        ]}
+      />
+      <ProductDescription
+        title="Trappe 1"
+        description="lorem 13 456  3sd fsd5f4 3sd 35dsf4 dsfdsfds sdfsdfsdf sdfdsfsdfsd dsfdsf sdf 5646 sdf sdf sdf65464"
+        images={["product1.jpg", "product2.jpg", "product3.jpg"]}
+      />
       <ProductCustomizer />
       <PriceOverview />
     </main>
