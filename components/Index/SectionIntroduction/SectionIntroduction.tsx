@@ -42,11 +42,17 @@ const SectionIntroduction = () => {
         <div className={styles["buttons-container"]}>
           <CustomButton
             className={styles["button"] + " background-secondary text-primary"}
+            onClick={() => {
+              console.log("click");
+            }}
           >
             Buy templatez
           </CustomButton>
           <CustomButton
             className={styles["button"] + " " + styles["secondary-button"]}
+            onClick={() => {
+              console.log("click");
+            }}
           >
             Explore all pages
           </CustomButton>
