@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./SectionInstallation.module.css";
-import Section from "../UI/Section/Section";
+import Section from "../../UI/Section/Section";
 import Image from "next/image";
-import devisImage from "../../assets/illustration_devis.jpeg";
-import installationImage from "../../assets/illustration_installation.jpg";
+import devisImage from "../../../assets/illustration_devis.jpeg";
+import installationImage from "../../../assets/illustration_installation.jpg";
 
 const SectionInstallation = () => {
   return (

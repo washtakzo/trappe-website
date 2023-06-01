@@ -1,9 +1,8 @@
 import React from "react";
 import styles from "./SectionIntroduction.module.css";
 import Image from "next/image";
-import CustomButton from "../UI/CustomButton/CustomButton";
-import illustration from "../../assets/illu1.jpg";
-import illustrationSmile from "../../assets/worker_smile.jpg";
+import CustomButton from "../../UI/CustomButton/CustomButton";
+import illustrationSmile from "../../../assets/worker_smile.jpg";
 import { GiFrance } from "react-icons/gi";
 import { CiRuler } from "react-icons/ci";
 import { FaFileContract, FaTools } from "react-icons/fa";

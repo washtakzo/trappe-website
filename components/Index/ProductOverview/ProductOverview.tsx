@@ -3,15 +3,21 @@ import React, { useState } from "react";
 import styles from "./ProductOverview.module.css";
 import Image, { StaticImageData } from "next/image";
 import imageExemple from "../../assets/illu1.jpg";
-import CustomButton from "../UI/CustomButton/CustomButton";
+import CustomButton from "../../UI/CustomButton/CustomButton";
 
 type Props = {
   position: number;
   primaryImage: StaticImageData;
   secondaryImage?: StaticImageData;
+  onClick: () => void;
 };
 
-const ProductOverview = ({ position, primaryImage, secondaryImage }: Props) => {
+const ProductOverview = ({
+  position,
+  primaryImage,
+  secondaryImage,
+  onClick,
+}: Props) => {
   const [secondaryImageIsVisible, setSecondaryImageIsVisible] = useState(false);
 
   const positionStyle = position % 2 == 0 ? "row" : "row-reverse";
@@ -22,6 +28,7 @@ const ProductOverview = ({ position, primaryImage, secondaryImage }: Props) => {
       style={{ "--position": positionStyle } as React.CSSProperties}
       onMouseEnter={() => setSecondaryImageIsVisible(true)}
       onMouseLeave={() => setSecondaryImageIsVisible(false)}
+      onClick={onClick}
     >
       <div className={styles["image-container"]}>
         <Image
@@ -50,6 +57,7 @@ const ProductOverview = ({ position, primaryImage, secondaryImage }: Props) => {
             styles["text-container__button"] +
             " background-secondary text-primary"
           }
+          onClick={onClick}
         >
           See Product
         </CustomButton>

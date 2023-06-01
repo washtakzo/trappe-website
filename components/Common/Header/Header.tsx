@@ -4,7 +4,8 @@ import styles from "./Header.module.css";
 import Cart from "../Cart/Cart";
 import BurgerButton from "../BurgerButton/BurgerButton";
 import Image from "next/image";
-import logo from "../../assets/best-employee.png";
+import logo from "../../../assets/best-employee.png";
+import Link from "next/link";
 
 function Header() {
   const [isClicked, setIsClicked] = useState(false);
@@ -27,7 +28,7 @@ function Header() {
       </div>
       <ul className={linkContainerStyle}>
         <li>
-          <a href="">Home</a>
+          <Link href="/">Home</Link>
         </li>
         <li>
           <a href="">About</a>
