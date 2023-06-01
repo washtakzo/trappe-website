@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import Header from "../components/Header/Header";
-import SectionIntroduction from "../components/SectionIntroduction/SectionIntroduction";
-import SectionMainProducts from "../components/SectionMainProducts/SectionMainProducts";
-import Footer from "../components/Footer/Footer";
-import SectionLivraison from "../components/SectionLivraison/SectionLivraison";
-import SectionInstallation from "../components/SectionInstallation/SectionInstallation";
-import SectionOutilConception from "../components/SectionMainProducts copy/SectionOutilConception";
+import Header from "../components/Common/Header/Header";
+import SectionIntroduction from "../components/Index/SectionIntroduction/SectionIntroduction";
+import SectionMainProducts from "../components/Index/SectionMainProducts/SectionMainProducts";
+import Footer from "../components/Common/Footer/Footer";
+import SectionLivraison from "../components/Index/SectionLivraison/SectionLivraison";
+import SectionInstallation from "../components/Index/SectionInstallation/SectionInstallation";
+import SectionOutilConception from "../components/Index/SectionOutilConception/SectionOutilConception";
 
 export default function Home() {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import Section from "../UI/Section/Section";
+import Section from "../../UI/Section/Section";
 import styles from "./SectionLivraison.module.css";
 import { FiPackage, FiTruck } from "react-icons/fi";
 import { BiTimer } from "react-icons/bi";

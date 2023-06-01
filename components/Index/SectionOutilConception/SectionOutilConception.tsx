@@ -1,12 +1,19 @@
 import React from "react";
 import styles from "./SectionOutilConception.module.css";
 
-import Section from "../UI/Section/Section";
+import Section from "../../UI/Section/Section";
 import Image from "next/image";
-import illustration from "../../assets/conception_illustration.png";
-import CustomButton from "../UI/CustomButton/CustomButton";
+import illustration from "../../../assets/conception_illustration.png";
+import CustomButton from "../../UI/CustomButton/CustomButton";
+import { useRouter } from "next/router";
 
 const SectionOutilConception = () => {
+  const router = useRouter();
+
+  const clickHandler = () => {
+    router.push("conception");
+  };
+
   return (
     <Section
       title="Outil de conception"
@@ -23,7 +30,7 @@ const SectionOutilConception = () => {
         <p>
           Concevez votre trappe sur mesure et optenez un devis instantanément !
         </p>
-        <CustomButton className={styles.button}>
+        <CustomButton className={styles.button} onClick={clickHandler}>
           Concevoir ma trappe !
         </CustomButton>
       </div>
