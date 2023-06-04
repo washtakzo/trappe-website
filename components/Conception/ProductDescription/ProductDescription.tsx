@@ -12,7 +12,7 @@ const ProductDescription = ({ title, description, images }: Props) => {
   const [mainImage, setMainImage] = useState(images[0]);
 
   return (
-    <div className={styles["product-description"]}>
+    <section className={styles["product-description"]}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles["images-container"]}>
         <div className={styles["main-image"]}>
@@ -42,7 +42,7 @@ const ProductDescription = ({ title, description, images }: Props) => {
         </div>
       </div>
       <p className={styles.description}>Description : {description}</p>
-    </div>
+    </section>
   );
 };
 

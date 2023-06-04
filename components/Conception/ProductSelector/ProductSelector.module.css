@@ -23,11 +23,6 @@
   transform: scale(1.05);
 }
 
-.section-title {
-  text-align: center;
-  padding: 1rem 0;
-}
-
 .image-container {
   position: relative;
   aspect-ratio: 1;

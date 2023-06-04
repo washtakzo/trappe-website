@@ -5,6 +5,7 @@ import ProductSelector from "../components/Conception/ProductSelector/ProductSel
 import ProductDescription from "../components/Conception/ProductDescription/ProductDescription";
 import ProductCustomizer from "../components/Conception/ProductCustomizer/ProductCustomizer";
 import PriceOverview from "../components/Conception/PriceOverview/PriceOverview";
+import Footer from "../components/Common/Footer/Footer";
 
 const conception = () => {
   return (
@@ -26,6 +27,7 @@ const conception = () => {
       />
       <ProductCustomizer />
       <PriceOverview />
+      <Footer />
     </main>
   );
 };

@@ -5,7 +5,6 @@
 }
 .title {
   padding: 1rem 0;
-  font-size: 1.5rem;
 }
 .images-container {
   display: flex;
@@ -55,6 +54,9 @@
   .other-images > div {
     height: 7rem;
   }
+  .title {
+    font-size: 1.8rem;
+  }
 }
 
 /*'lg': '1024px',*/
@@ -72,6 +74,9 @@
 
 /*'xl': '1280px',*/
 @media (min-width: 1280px) {
+  .description {
+    font-size: 1.1rem;
+  }
 }
 
 /*'2xl': '1536px',*/

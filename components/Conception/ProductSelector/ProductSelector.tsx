@@ -10,8 +10,8 @@ type Props = {
 
 const ProductSelector = ({ title, customizableProducts }: Props) => {
   return (
-    <div>
-      <h2 className={styles["section-title"]}>{title}</h2>
+    <section>
+      <h2 className={"section-title"}>{title}</h2>
       <div className={styles["products-container"]}>
         {customizableProducts.map((product) => (
           <div key={product.title} className={styles.product}>
@@ -27,7 +27,7 @@ const ProductSelector = ({ title, customizableProducts }: Props) => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
