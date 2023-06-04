@@ -23,11 +23,6 @@
   transform: scale(1.05);
 }
 
-.section-title {
-  text-align: center;
-  padding: 1rem 0;
-}
-
 .image-container {
   position: relative;
   aspect-ratio: 1;
@@ -50,9 +45,6 @@
 
 /*'md': '768px',*/
 @media (min-width: 768px) {
-  .section-title {
-    font-size: 1.8rem;
-  }
 }
 
 /*'lg': '1024px',*/

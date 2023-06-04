@@ -1,1 +1,120 @@
+.product-customizer {
+}
+.title {
+}
+.customizer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
+  /* background-color: red; */
+  min-width: 300px;
+  max-width: 940px;
+  width: 300px;
+  margin: auto;
+}
+.blueprint {
+  padding: 1rem;
+  /* background-color: green; */
+  width: 100%;
+}
+.blueprint__schema-container {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  aspect-ratio: 1;
+  width: 100%;
+}
+.blueprint__schema-container > p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blueprint__schema-container > p:last-child {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.blueprint__schema-container__background {
+  background-color: rgb(228, 226, 226);
+  padding: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+}
+.blueprint__schema {
+  border: solid hsl(var(--color-third)) 2px;
+  background-color: hsl(var(--color-third) / 0.2);
+}
+.pickers-container {
+  /* background-color: aqua; */
+  /* width: 100%; */
+}
+.picker-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.picker-slider {
+  accent-color: hsl(var(--color-secondary));
+  width: 26%;
+  min-width: 160px;
+}
+.picker-input {
+  border: none;
+  text-align: center;
+  font-size: 0.9rem;
+  background-color: transparent;
+}
+.picker-input:focus {
+  outline: none;
+}
+
+/*sm': '640px',*/
+@media (min-width: 640px) {
+  .customizer-container {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80%;
+  }
+  .blueprint {
+    width: 300px;
+  }
+  .picker-slider {
+    width: 200px;
+  }
+}
+
+/*'md': '768px',*/
+@media (min-width: 768px) {
+}
+
+/*'lg': '1024px',*/
+@media (min-width: 1024px) {
+  .customizer-container {
+    gap: 6vw;
+  }
+  .blueprint {
+    width: 400px;
+  }
+  .picker-slider {
+    width: 260px;
+  }
+  .blueprint__schema-container > p {
+    font-size: 1.2rem;
+  }
+  .picker-input {
+    font-size: 1.2rem;
+  }
+}
+
+/*'xl': '1280px',*/
+@media (min-width: 1280px) {
+}
+
+/*'2xl': '1536px',*/
+@media (min-width: 1536px) {
+}
