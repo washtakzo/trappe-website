@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./ProductCustomizer.module.css";
 import { getRectanglePercentages } from "../../../utils/functions/math";
 
@@ -6,35 +6,42 @@ const ProductCustomizer = () => {
   const [width, setWidth] = useState(46);
   const [height, setHeight] = useState(46);
 
+  const heightInputRef = useRef<HTMLInputElement>(null);
+
   const schemaMesures = getRectanglePercentages(height, width);
 
-  const minWidth = 20;
+  const minWidth = 14;
   const maxWidth = 99;
 
   const minHeight = 20;
   const maxHeight = 80;
 
   const changeWidthHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
+    const value = +event.target.value;
     const newWidth =
-      +value < minWidth ? minWidth : +value > maxWidth ? maxWidth : +value;
-    setWidth(newWidth);
+      value < minWidth ? minWidth : value > maxWidth ? maxWidth : value;
+    setWidth(value);
   };
 
-  const changeHeightHandler = (
-    event: React.KeyboardEvent<HTMLInputElement>
-  ) => {
-    const value = event.target.value;
-    const key = event.key;
-    if (key == "Enter") {
-      const newHeight =
-        +value < minHeight
-          ? minHeight
-          : +value > maxHeight
-          ? maxHeight
-          : +value;
-      setHeight(newHeight);
-    }
+  const changeHeightHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = +event.target.value;
+    const newHeight =
+      value < minHeight ? minHeight : value > maxHeight ? maxHeight : value;
+    setHeight(value);
+  };
+
+  const validateHeightHandler = (event: React.FocusEvent<HTMLInputElement>) => {
+    const value = +event.target.value;
+    const newHeight =
+      value < minHeight ? minHeight : value > maxHeight ? maxHeight : value;
+    setHeight(newHeight);
+  };
+
+  const validateWidthHandler = (event: React.FocusEvent<HTMLInputElement>) => {
+    const value = +event.target.value;
+    const newWidth =
+      value < minWidth ? minWidth : value > maxWidth ? maxWidth : value;
+    setWidth(newWidth);
   };
 
   return (
@@ -74,6 +81,7 @@ const ProductCustomizer = () => {
               max={maxWidth}
               value={width}
               onInput={changeWidthHandler}
+              onBlur={validateWidthHandler}
             />
           </div>
           <div className={styles["picker-container"]}>
@@ -83,7 +91,7 @@ const ProductCustomizer = () => {
               min={minHeight}
               max={maxHeight}
               value={height}
-              onInput={() => {}}
+              onInput={changeHeightHandler}
             />
             <input
               className={styles["picker-input"]}
@@ -91,7 +99,8 @@ const ProductCustomizer = () => {
               min={minHeight}
               max={maxHeight}
               value={height}
-              onKeyUp={changeHeightHandler}
+              onInput={changeHeightHandler}
+              onBlur={validateHeightHandler}
             />
           </div>
         </div>
