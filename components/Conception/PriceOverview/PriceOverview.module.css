@@ -1,0 +1,47 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: inline-block;
+  margin: auto;
+  padding: 1rem 0;
+}
+
+.radio-choice-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  width: 220px;
+  margin: 0.4rem auto;
+}
+
+.radio {
+  accent-color: hsl(var(--color-secondary));
+}
+
+.address-container {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.8rem auto;
+}
+
+.price-container > h3 {
+  padding: 0.6rem 0;
+}
+.price-container > p {
+  padding: 0.4rem 0;
+}
+
+.button {
+  display: block;
+  margin: auto;
+  background-color: hsl(var(--color-secondary));
+  color: hsl(var(--color-primary));
+}

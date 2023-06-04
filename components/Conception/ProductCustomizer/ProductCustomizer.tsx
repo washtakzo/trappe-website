@@ -45,7 +45,7 @@ const ProductCustomizer = () => {
   };
 
   return (
-    <div className={styles["product-customizer"]}>
+    <section className={styles["product-customizer"]}>
       <h2 className={"section-title"}>Trappe sur mesure</h2>
       <div className={styles["customizer-container"]}>
         <div className={styles["blueprint"]}>
@@ -105,7 +105,7 @@ const ProductCustomizer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
