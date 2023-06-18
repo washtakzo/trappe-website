@@ -3,27 +3,28 @@ import styles from "./ProductSelector.module.css";
 
 import Image from "next/image";
 
+import { DUMMY_DATA } from "../../../utils/data";
+
 type Props = {
   title: string;
-  customizableProducts: CustomizableProduct[];
 };
 
-const ProductSelector = ({ title, customizableProducts }: Props) => {
+const ProductSelector = ({ title }: Props) => {
   return (
     <section>
       <h2 className={"section-title"}>{title}</h2>
       <div className={styles["products-container"]}>
-        {customizableProducts.map((product) => (
-          <div key={product.title} className={styles.product}>
+        {DUMMY_DATA.map((trappe) => (
+          <div key={trappe.name} className={styles.product}>
             <div className={styles["image-container"]}>
               <Image
-                src={require("../../../assets/" + product.image)}
+                src={trappe.images[0]}
                 className={styles.image}
                 fill
-                alt={product.title}
+                alt={trappe.name}
               />
             </div>
-            <p>{product.title}</p>
+            <p>{trappe.name}</p>
           </div>
         ))}
       </div>
