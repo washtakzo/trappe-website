@@ -3,9 +3,6 @@ import styles from "./SectionMainProducts.module.css";
 
 import ProductOverview from "../ProductOverview/ProductOverview";
 import Section from "../../UI/Section/Section";
-import imageProduct1 from "../../../assets/product1.jpg";
-import imageProduct2 from "../../../assets/product2.jpg";
-import imageProduct3 from "../../../assets/product3.jpg";
 import { useRouter } from "next/router";
 
 import { DUMMY_DATA } from "../../../utils/data";
@@ -13,8 +10,8 @@ import { DUMMY_DATA } from "../../../utils/data";
 const SectionMainProducts = () => {
   const router = useRouter();
 
-  const clickHandler = () => {
-    router.push("conception");
+  const clickHandler = (id:string) => {
+    router.push({pathname:"conception",query:{id}});
   };
 
   return (
@@ -25,7 +22,7 @@ const SectionMainProducts = () => {
       {DUMMY_DATA.map((trappe) => (
         <ProductOverview
           key={trappe.id}
-          onClick={clickHandler}
+          onClick={clickHandler.bind(this, trappe.id)}
           trappe={trappe}
         />
       ))}

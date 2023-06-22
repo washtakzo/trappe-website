@@ -2,45 +2,43 @@ import React, { useRef, useState } from "react";
 import styles from "./ProductCustomizer.module.css";
 import { getRectanglePercentages } from "../../../utils/functions/math";
 
-const ProductCustomizer = () => {
-  const [width, setWidth] = useState(46);
-  const [height, setHeight] = useState(46);
+type Props = {
+  trappe:Trappe;
+}
+
+const ProductCustomizer = ({trappe}:Props) => {
+  const [width, setWidth] = useState(trappe.minWidth);
+  const [height, setHeight] = useState(trappe.minHeight);
 
   const heightInputRef = useRef<HTMLInputElement>(null);
 
   const schemaMesures = getRectanglePercentages(height, width);
 
-  const minWidth = 14;
-  const maxWidth = 99;
-
-  const minHeight = 20;
-  const maxHeight = 80;
-
   const changeWidthHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = +event.target.value;
     const newWidth =
-      value < minWidth ? minWidth : value > maxWidth ? maxWidth : value;
-    setWidth(value);
+      value < trappe.minWidth ? trappe.minWidth : value > trappe.maxWidth ? trappe.maxWidth : value;
+    setWidth(newWidth);
   };
 
   const changeHeightHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = +event.target.value;
     const newHeight =
-      value < minHeight ? minHeight : value > maxHeight ? maxHeight : value;
+      value < trappe.minHeight ? trappe.minHeight : value > trappe.maxHeight ? trappe.maxHeight : value;
     setHeight(value);
   };
 
   const validateHeightHandler = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = +event.target.value;
     const newHeight =
-      value < minHeight ? minHeight : value > maxHeight ? maxHeight : value;
+      value < trappe.minHeight ? trappe.minHeight : value > trappe.maxHeight ? trappe.maxHeight : value;
     setHeight(newHeight);
   };
 
   const validateWidthHandler = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = +event.target.value;
     const newWidth =
-      value < minWidth ? minWidth : value > maxWidth ? maxWidth : value;
+      value < trappe.minWidth ? trappe.minWidth : value > trappe.maxWidth ? trappe.maxWidth : value;
     setWidth(newWidth);
   };
 
@@ -69,16 +67,16 @@ const ProductCustomizer = () => {
             <input
               className={styles["picker-slider"]}
               type="range"
-              min={minWidth}
-              max={maxWidth}
+              min={trappe.minWidth}
+              max={trappe.maxWidth}
               value={width}
               onInput={changeWidthHandler}
             />
             <input
               className={styles["picker-input"]}
               type="number"
-              min={minWidth}
-              max={maxWidth}
+              min={trappe.minWidth}
+              max={trappe.maxWidth}
               value={width}
               onInput={changeWidthHandler}
               onBlur={validateWidthHandler}
@@ -88,16 +86,16 @@ const ProductCustomizer = () => {
             <input
               className={styles["picker-slider"]}
               type="range"
-              min={minHeight}
-              max={maxHeight}
+              min={trappe.minHeight}
+              max={trappe.maxHeight}
               value={height}
               onInput={changeHeightHandler}
             />
             <input
               className={styles["picker-input"]}
               type="number"
-              min={minHeight}
-              max={maxHeight}
+              min={trappe.minHeight}
+              max={trappe.maxHeight}
               value={height}
               onInput={changeHeightHandler}
               onBlur={validateHeightHandler}

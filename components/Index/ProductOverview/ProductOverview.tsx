@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
 import styles from "./ProductOverview.module.css";
-import Image, { StaticImageData } from "next/image";
-import imageExemple from "../../assets/illu1.jpg";
+import Image from "next/image";
 import CustomButton from "../../UI/CustomButton/CustomButton";
 
 type Props = {
@@ -36,7 +35,7 @@ const ProductOverview = ({ trappe, onClick }: Props) => {
         />
       </div>
       <div className={styles["text-container"]}>
-        <h3 className={styles["text-container__title"]}>Trappe Etanche</h3>
+        <h3 className={styles["text-container__title"]}>{trappe.name}</h3>
         <p className={styles["text-container__text"] + " text-secondary-600"}>
           {trappe.shortDescription}
         </p>

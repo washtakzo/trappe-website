@@ -6,18 +6,27 @@ import ProductDescription from "../components/Conception/ProductDescription/Prod
 import ProductCustomizer from "../components/Conception/ProductCustomizer/ProductCustomizer";
 import PriceOverview from "../components/Conception/PriceOverview/PriceOverview";
 import Footer from "../components/Common/Footer/Footer";
+import { useRouter } from "next/router";
+
+import { DUMMY_DATA } from "../utils/data";
 
 const conception = () => {
+  const router = useRouter();
+
+  const trappeId = router.query.id ?? '1';
+
+  console.log('conception render');
+  
+
+  const trappe = DUMMY_DATA.find(product => product.id === trappeId)!;
   return (
     <main>
       <Header />
       <ProductSelector title="Selectionnez une trappe" />
       <ProductDescription
-        title="Trappe 1"
-        description="lorem 13 456  3sd fsd5f4 3sd 35dsf4 dsfdsfds sdfsdfsdf sdfdsfsdfsd dsfdsf sdf 5646 sdf sdf sdf65464"
-        images={["product1.jpg", "product2.jpg", "product3.jpg"]}
+        trappe={trappe}
       />
-      <ProductCustomizer />
+      <ProductCustomizer trappe={trappe} />
       <PriceOverview />
       <Footer />
     </main>

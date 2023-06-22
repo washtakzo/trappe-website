@@ -3,17 +3,19 @@ import styles from "./ProductDescription.module.css";
 import Image from "next/image";
 
 type Props = {
-  title: string;
-  description: string;
-  images: string[];
+  trappe:Trappe;
 };
 
-const ProductDescription = ({ title, description, images }: Props) => {
-  const [mainImage, setMainImage] = useState(images[0]);
+const ProductDescription = ({ trappe }: Props) => {
+  const [mainImage, setMainImage] = useState(trappe.images[0]);
+
+  React.useEffect(()=>{
+    setMainImage(trappe.images[0])
+  },[trappe])
 
   return (
     <section className={styles["product-description"]}>
-      <h2 className={styles.title}>{title}</h2>
+      <h2 className={styles.title}>{trappe.name}</h2>
       <div className={styles["images-container"]}>
         <div className={styles["main-image"]}>
           {/*
@@ -22,26 +24,26 @@ const ProductDescription = ({ title, description, images }: Props) => {
             et d'y placer en cours de route la variable. Fonctionnement compliqué qui est dû à un bug qui n'est pas de mon côté  
           */}
           <Image
-            src={require(`../../../assets/${mainImage}`)}
+            src={mainImage}
             className={styles.image}
             fill
-            alt={title}
+            alt={trappe.name}
           />
         </div>
         <div className={styles["other-images"]}>
-          {images.map((imagePath, index) => (
+          {trappe.images.map((imagePath, index) => (
             <div key={index} onClick={() => setMainImage(imagePath)}>
               <Image
-                src={require(`../../../assets/${imagePath}`)}
+                src={imagePath}
                 className={styles.image}
                 fill
-                alt={title}
+                alt={trappe.name}
               />
             </div>
           ))}
         </div>
       </div>
-      <p className={styles.description}>Description : {description}</p>
+      <p className={styles.description}>Description : {trappe.longDescription}</p>
     </section>
   );
 };
