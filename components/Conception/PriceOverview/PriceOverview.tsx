@@ -2,7 +2,12 @@ import React from "react";
 import styles from "./PriceOverview.module.css";
 import CustomButton from "../../UI/CustomButton/CustomButton";
 
-const PriceOverview = () => {
+type Props = {
+  selectedWidth:number;
+  selectedHeight:number;
+}
+
+const PriceOverview = ({selectedWidth, selectedHeight}:Props) => {
   const [isInstallationSelected, setIsInstallationSelected] =
     React.useState(true);
   const [isShippingSelected, setIsShippingSelected] = React.useState(false);
@@ -66,6 +71,7 @@ const PriceOverview = () => {
         <CustomButton onClick={() => {}} className={styles.button}>
           Valider
         </CustomButton>
+        {selectedWidth + " // " + selectedHeight}
       </form>
     </section>
   );

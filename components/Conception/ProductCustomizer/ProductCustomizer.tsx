@@ -4,13 +4,18 @@ import { getRectanglePercentages } from "../../../utils/functions/math";
 
 type Props = {
   trappe:Trappe;
+  onChangeWidth:(selectedWidth:number)=>void;
+  onChangeHeight:(selectedHeight:number)=>void;
 }
 
-const ProductCustomizer = ({trappe}:Props) => {
+const ProductCustomizer = ({trappe, onChangeWidth, onChangeHeight}:Props) => {
   const [width, setWidth] = useState(trappe.minWidth);
   const [height, setHeight] = useState(trappe.minHeight);
 
-  const heightInputRef = useRef<HTMLInputElement>(null);
+  React.useEffect(()=>{
+    setWidth(trappe.minWidth);
+    setHeight(trappe.minHeight);
+  },[trappe])
 
   const schemaMesures = getRectanglePercentages(height, width);
 
@@ -19,13 +24,15 @@ const ProductCustomizer = ({trappe}:Props) => {
     const newWidth =
       value < trappe.minWidth ? trappe.minWidth : value > trappe.maxWidth ? trappe.maxWidth : value;
     setWidth(newWidth);
+    onChangeWidth(+newWidth);
   };
-
+  
   const changeHeightHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = +event.target.value;
     const newHeight =
-      value < trappe.minHeight ? trappe.minHeight : value > trappe.maxHeight ? trappe.maxHeight : value;
-    setHeight(value);
+    value < trappe.minHeight ? trappe.minHeight : value > trappe.maxHeight ? trappe.maxHeight : value;
+    setHeight(newHeight);
+    onChangeHeight(+newHeight);
   };
 
   const validateHeightHandler = (event: React.FocusEvent<HTMLInputElement>) => {
