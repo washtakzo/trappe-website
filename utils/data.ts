@@ -39,7 +39,7 @@ export const DUMMY_DATA: Trappe[] = [
     ],
     minWidth: 60,
     maxWidth: 180,
-    minHeight: 80,
+    minHeight: 90,
     maxHeight: 160,
     shortDescription: "Trappe pour endroit pluvieux",
     longDescription: "Trappe de qualité française en caoutchouc impérméable",
@@ -67,7 +67,7 @@ export const DUMMY_DATA: Trappe[] = [
     ],
     minWidth: 180,
     maxWidth: 260,
-    minHeight: 180,
+    minHeight: 190,
     maxHeight: 210,
     shortDescription: "Trappe pour accès éléctrique",
     longDescription:

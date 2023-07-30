@@ -10,11 +10,11 @@ import { useRouter } from "next/router";
 
 import { DUMMY_DATA } from "../../../utils/data";
 
-const SectionMainProducts = () => {
+const SectionMainProducts = ({ trappes }: { trappes: Trappe[] }) => {
   const router = useRouter();
 
-  const clickHandler = () => {
-    router.push("conception");
+  const clickHandler = (id: string) => () => {
+    router.push({ pathname: "/conception", query: { id } });
   };
 
   return (
@@ -22,10 +22,10 @@ const SectionMainProducts = () => {
       title="What is included in Coworking Z"
       contentClassName={styles.content}
     >
-      {DUMMY_DATA.map((trappe) => (
+      {trappes.map((trappe) => (
         <ProductOverview
           key={trappe.id}
-          onClick={clickHandler}
+          onClick={clickHandler(trappe.id)}
           trappe={trappe}
         />
       ))}

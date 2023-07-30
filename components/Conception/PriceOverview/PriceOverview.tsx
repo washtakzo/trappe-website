@@ -7,14 +7,12 @@ const PriceOverview = () => {
     React.useState(true);
   const [isShippingSelected, setIsShippingSelected] = React.useState(false);
 
-  const radioInstallationHandler = (
-    event: React.MouseEvent<HTMLInputElement>
-  ) => {
+  const radioInstallationHandler = () => {
     setIsInstallationSelected(true);
     setIsShippingSelected(false);
   };
 
-  const radioShippingHandler = (event: React.MouseEvent<HTMLInputElement>) => {
+  const radioShippingHandler = () => {
     setIsInstallationSelected(false);
     setIsShippingSelected(true);
   };
@@ -32,7 +30,7 @@ const PriceOverview = () => {
             type="radio"
             className={styles.radio}
             checked={isInstallationSelected}
-            onClick={radioInstallationHandler}
+            onChange={radioInstallationHandler}
           />
           <p>Installation sur site</p>
         </div>
@@ -41,7 +39,7 @@ const PriceOverview = () => {
             type="radio"
             className={styles.radio}
             checked={isShippingSelected}
-            onClick={radioShippingHandler}
+            onChange={radioShippingHandler}
           />
           <p>Livraison uniquement</p>
         </div>
