@@ -1,11 +1,24 @@
 import React from "react";
 import styles from "./PriceOverview.module.css";
 import CustomButton from "../../UI/CustomButton/CustomButton";
+import { getTrappePrice } from "../../../utils/functions/math";
 
-const PriceOverview = () => {
+type Props = {
+  trappe: FetchedTrappe;
+  trappeWidth: number;
+  trappeHeight: number;
+};
+
+const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
   const [isInstallationSelected, setIsInstallationSelected] =
     React.useState(true);
   const [isShippingSelected, setIsShippingSelected] = React.useState(false);
+
+  const price = getTrappePrice(trappe, trappeWidth, trappeHeight);
+  const option = isInstallationSelected
+    ? trappe.setup_price
+    : trappe.shipping_price;
+  const total = price + option;
 
   const radioInstallationHandler = () => {
     setIsInstallationSelected(true);
@@ -57,9 +70,14 @@ const PriceOverview = () => {
         </div>
         <div className={styles["price-container"]}>
           <h3>Prix</h3>
-          <p>Matériel : </p>
-          <p>Installation sur site : </p>
-          <p>Total : </p>
+          <p>Matériel : {price}</p>
+          {isInstallationSelected && (
+            <p>Installation sur site : {trappe.setup_price}</p>
+          )}
+          {!isInstallationSelected && (
+            <p>Frais de livraison : {trappe.shipping_price}</p>
+          )}
+          <p>Total : {total}</p>
         </div>
         <CustomButton onClick={() => {}} className={styles.button}>
           Valider

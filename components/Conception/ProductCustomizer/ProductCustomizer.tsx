@@ -3,7 +3,7 @@ import styles from "./ProductCustomizer.module.css";
 import { getRectanglePercentages } from "../../../utils/functions/math";
 
 type Props = {
-  trappe: Trappe;
+  trappe: FetchedTrappe;
   width: number;
   height: number;
   onChangeWidth: (width: number) => void;
