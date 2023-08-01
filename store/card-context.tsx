@@ -8,7 +8,8 @@ type CardValues = {
 
 type Product = {
   trappe: Trappe;
-  surface: number;
+  width: number;
+  height: number;
   quantity: number;
 };
 
@@ -33,7 +34,9 @@ export const CardContextProvider = ({ children }: Props) => {
     const productIsAlreadyInCard =
       productsCopy.findIndex(
         (p) =>
-          p.trappe.id === product.trappe.id && p.surface === product.surface
+          p.trappe.id === product.trappe.id &&
+          p.width === product.width &&
+          p.height === product.height
       ) >= 0;
 
     if (productIsAlreadyInCard) {
@@ -59,7 +62,9 @@ export const CardContextProvider = ({ children }: Props) => {
     const productIsAlreadyInCard =
       productsCopy.findIndex(
         (p) =>
-          p.trappe.id === product.trappe.id && p.surface === product.surface
+          p.trappe.id === product.trappe.id &&
+          p.width === product.width &&
+          p.height === product.height
       ) >= 0;
 
     if (productIsAlreadyInCard) {
