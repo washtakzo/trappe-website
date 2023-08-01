@@ -2,46 +2,66 @@ import React, { useRef, useState } from "react";
 import styles from "./ProductCustomizer.module.css";
 import { getRectanglePercentages } from "../../../utils/functions/math";
 
-const ProductCustomizer = () => {
-  const [width, setWidth] = useState(46);
-  const [height, setHeight] = useState(46);
+type Props = {
+  trappe: FetchedTrappe;
+  width: number;
+  height: number;
+  onChangeWidth: (width: number) => void;
+  onChangeHeight: (height: number) => void;
+};
 
-  const heightInputRef = useRef<HTMLInputElement>(null);
+const ProductCustomizer = ({
+  trappe,
+  width,
+  height,
+  onChangeWidth,
+  onChangeHeight,
+}: Props) => {
+  // const [width, setWidth] = useState(trappe.min_width);
+  // const [height, setHeight] = useState(trappe.min_height);
+
+  const minWidth = trappe.min_width;
+  const maxWidth = trappe.max_width;
+
+  const minHeight = trappe.min_height;
+  const maxHeight = trappe.max_height;
 
   const schemaMesures = getRectanglePercentages(height, width);
-
-  const minWidth = 14;
-  const maxWidth = 99;
-
-  const minHeight = 20;
-  const maxHeight = 80;
 
   const changeWidthHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = +event.target.value;
     const newWidth =
       value < minWidth ? minWidth : value > maxWidth ? maxWidth : value;
-    setWidth(value);
+    // setWidth(newWidth);
+
+    onChangeWidth(newWidth);
   };
 
   const changeHeightHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = +event.target.value;
     const newHeight =
       value < minHeight ? minHeight : value > maxHeight ? maxHeight : value;
-    setHeight(value);
+    // setHeight(newHeight);
+
+    onChangeHeight(newHeight);
   };
 
   const validateHeightHandler = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = +event.target.value;
     const newHeight =
       value < minHeight ? minHeight : value > maxHeight ? maxHeight : value;
-    setHeight(newHeight);
+    // setHeight(newHeight);
+
+    onChangeHeight(newHeight);
   };
 
   const validateWidthHandler = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = +event.target.value;
     const newWidth =
       value < minWidth ? minWidth : value > maxWidth ? maxWidth : value;
-    setWidth(newWidth);
+    // setWidth(newWidth);
+
+    onChangeWidth(newWidth);
   };
 
   return (
@@ -72,6 +92,7 @@ const ProductCustomizer = () => {
               min={minWidth}
               max={maxWidth}
               value={width}
+              onChange={changeWidthHandler}
               onInput={changeWidthHandler}
             />
             <input
@@ -91,6 +112,7 @@ const ProductCustomizer = () => {
               min={minHeight}
               max={maxHeight}
               value={height}
+              onChange={changeHeightHandler}
               onInput={changeHeightHandler}
             />
             <input

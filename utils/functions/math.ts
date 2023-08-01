@@ -17,3 +17,32 @@ export function getRectanglePercentages(
     return { heightPercentage: 100, widthPercentage: 100 };
   }
 }
+
+type PriceData = {
+  surface: number;
+  pricePerMetter: number;
+};
+
+export function getTrappePrice(
+  trappe: FetchedTrappe,
+  width: number,
+  height: number
+) {
+  const centimetersToMetters = 10;
+
+  const surface = (width * height) / centimetersToMetters;
+
+  const pricesJson = JSON.parse(trappe.prices);
+
+  pricesJson.sort((a: PriceData, b: PriceData) => a.surface - b.surface);
+
+  let priceData: PriceData = pricesJson[0];
+
+  pricesJson.forEach((pd: PriceData) => {
+    if (surface > pd.surface) priceData = pd;
+  });
+
+  const price = surface * priceData.pricePerMetter;
+
+  return price.toFixed(2);
+}

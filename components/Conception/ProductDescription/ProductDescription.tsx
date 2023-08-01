@@ -9,7 +9,15 @@ type Props = {
 };
 
 const ProductDescription = ({ title, description, images }: Props) => {
-  const [mainImage, setMainImage] = useState(images[0]);
+  const [mainImage, setMainImage] = useState<string>();
+
+  React.useEffect(() => {
+    if (images[0]) {
+      setMainImage(images[0]);
+    }
+  }, [images]);
+
+  if (!mainImage) return null;
 
   return (
     <section className={styles["product-description"]}>
@@ -22,7 +30,7 @@ const ProductDescription = ({ title, description, images }: Props) => {
             et d'y placer en cours de route la variable. Fonctionnement compliqué qui est dû à un bug qui n'est pas de mon côté  
           */}
           <Image
-            src={require(`../../../assets/${mainImage}`)}
+            src={`${mainImage}`}
             className={styles.image}
             fill
             alt={title}
@@ -32,7 +40,7 @@ const ProductDescription = ({ title, description, images }: Props) => {
           {images.map((imagePath, index) => (
             <div key={index} onClick={() => setMainImage(imagePath)}>
               <Image
-                src={require(`../../../assets/${imagePath}`)}
+                src={`${imagePath}`}
                 className={styles.image}
                 fill
                 alt={title}

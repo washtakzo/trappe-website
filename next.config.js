@@ -3,15 +3,15 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["https://sas-production-uploads.s3.eu-west-2.amazonaws.com/"],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "sas-production-uploads.s3.eu-west-2.amazonaws.com",
-        port: "",
-        pathname: "/**",
+        hostname: "**",
       },
     ],
+  },
+  env: {
+    API_BASE_URL: process.env.API_BASE_URL,
   },
 };
 

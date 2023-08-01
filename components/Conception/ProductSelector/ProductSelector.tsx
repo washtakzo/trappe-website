@@ -1,29 +1,43 @@
 import React from "react";
 import styles from "./ProductSelector.module.css";
 
+import { useRouter } from "next/router";
 import Image from "next/image";
+
+import { DUMMY_DATA } from "../../../utils/data";
 
 type Props = {
   title: string;
-  customizableProducts: CustomizableProduct[];
+  trappes: FetchedTrappe[];
 };
 
-const ProductSelector = ({ title, customizableProducts }: Props) => {
+const ProductSelector = ({ title, trappes }: Props) => {
+  const router = useRouter();
+
+  const clickHandler =
+    (id: string) => (_: React.MouseEvent<HTMLDivElement>) => {
+      router.push({ pathname: "/conception", query: { id } });
+    };
+
   return (
     <section>
       <h2 className={"section-title"}>{title}</h2>
       <div className={styles["products-container"]}>
-        {customizableProducts.map((product) => (
-          <div key={product.title} className={styles.product}>
+        {trappes.map((trappe) => (
+          <div
+            key={trappe.name}
+            className={styles.product}
+            onClick={clickHandler(trappe.id)}
+          >
             <div className={styles["image-container"]}>
               <Image
-                src={require("../../../assets/" + product.image)}
+                src={trappe.images[0]}
                 className={styles.image}
                 fill
-                alt={product.title}
+                alt={trappe.name}
               />
             </div>
-            <p>{product.title}</p>
+            <p>{trappe.name}</p>
           </div>
         ))}
       </div>

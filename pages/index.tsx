@@ -1,5 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
+import { GetStaticProps } from "next";
+
 import Header from "../components/Common/Header/Header";
 import SectionIntroduction from "../components/Index/SectionIntroduction/SectionIntroduction";
 import SectionMainProducts from "../components/Index/SectionMainProducts/SectionMainProducts";
@@ -7,8 +8,9 @@ import Footer from "../components/Common/Footer/Footer";
 import SectionLivraison from "../components/Index/SectionLivraison/SectionLivraison";
 import SectionInstallation from "../components/Index/SectionInstallation/SectionInstallation";
 import SectionOutilConception from "../components/Index/SectionOutilConception/SectionOutilConception";
+import { getAllTrappes } from "../utils/http";
 
-export default function Home() {
+export default function Home({ trappes }: { trappes: Trappe[] }) {
   return (
     <div>
       <Head>
@@ -23,7 +25,7 @@ export default function Home() {
       <main>
         <Header />
         <SectionIntroduction />
-        <SectionMainProducts />
+        <SectionMainProducts trappes={trappes} />
         <SectionLivraison />
         <SectionOutilConception />
         <SectionInstallation />
@@ -32,3 +34,14 @@ export default function Home() {
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps<{
+  trappes: Trappe[];
+}> = async () => {
+  const response = await getAllTrappes();
+  const responseData = await response.json();
+  const trappes = responseData.data;
+  console.log(trappes);
+
+  return { props: { trappes } };
+};

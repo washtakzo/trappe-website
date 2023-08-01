@@ -1,26 +1,31 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 import styles from "./Header.module.css";
 import Cart from "../Cart/Cart";
 import BurgerButton from "../BurgerButton/BurgerButton";
 import Image from "next/image";
 import logo from "../../../assets/best-employee.png";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function Header() {
-  const [isClicked, setIsClicked] = useState(false);
+  const router = useRouter();
+  const [burgerBtnIsClicked, setBurgerBtnIsClicked] = useState(false);
 
-  const burgerClickHandler = () => {
-    setIsClicked((state) => !state);
+  const goHome = () => {
+    router.push("/");
   };
 
-  const linkContainerStyle = isClicked
+  const burgerClickHandler = () => {
+    setBurgerBtnIsClicked((state) => !state);
+  };
+
+  const linkContainerStyle = burgerBtnIsClicked
     ? styles["link-container"] + " " + styles.open
     : styles["link-container"];
 
   return (
     <header className={styles.header}>
-      <div>
+      <div onClick={goHome}>
         <div className={styles["logo-container"]}>
           <Image src={logo} alt="logo" fill />
         </div>

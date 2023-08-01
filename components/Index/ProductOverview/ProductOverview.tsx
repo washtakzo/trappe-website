@@ -6,39 +6,29 @@ import imageExemple from "../../assets/illu1.jpg";
 import CustomButton from "../../UI/CustomButton/CustomButton";
 
 type Props = {
-  position: number;
-  primaryImage: StaticImageData;
-  secondaryImage?: StaticImageData;
+  trappe: Trappe;
   onClick: () => void;
 };
 
-const ProductOverview = ({
-  position,
-  primaryImage,
-  secondaryImage,
-  onClick,
-}: Props) => {
+const ProductOverview = ({ trappe, onClick }: Props) => {
   const [secondaryImageIsVisible, setSecondaryImageIsVisible] = useState(false);
-
-  const positionStyle = position % 2 == 0 ? "row" : "row-reverse";
 
   return (
     <div
       className={styles["product-overview"]}
-      style={{ "--position": positionStyle } as React.CSSProperties}
       onMouseEnter={() => setSecondaryImageIsVisible(true)}
       onMouseLeave={() => setSecondaryImageIsVisible(false)}
       onClick={onClick}
     >
       <div className={styles["image-container"]}>
         <Image
-          src={primaryImage}
+          src={trappe.images[0]}
           fill
           alt="trappe image"
           className={styles.image}
         />
         <Image
-          src={secondaryImage || primaryImage}
+          src={trappe.images[1] || trappe.images[0]}
           fill
           alt="trappe image"
           className={styles.image}
@@ -48,9 +38,7 @@ const ProductOverview = ({
       <div className={styles["text-container"]}>
         <h3 className={styles["text-container__title"]}>Trappe Etanche</h3>
         <p className={styles["text-container__text"] + " text-secondary-600"}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure
-          inventore dignissimos, aperiam ex quam sint, labore dolor temporibus
-          libero, laborum tenetur sapiente ad voluptatibus minima?
+          {trappe.short_description}
         </p>
         <CustomButton
           className={

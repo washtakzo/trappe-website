@@ -8,11 +8,13 @@ import imageProduct2 from "../../../assets/product2.jpg";
 import imageProduct3 from "../../../assets/product3.jpg";
 import { useRouter } from "next/router";
 
-const SectionMainProducts = () => {
+import { DUMMY_DATA } from "../../../utils/data";
+
+const SectionMainProducts = ({ trappes }: { trappes: Trappe[] }) => {
   const router = useRouter();
 
-  const clickHandler = () => {
-    router.push("conception");
+  const clickHandler = (id: string) => () => {
+    router.push({ pathname: "/conception", query: { id } });
   };
 
   return (
@@ -20,23 +22,13 @@ const SectionMainProducts = () => {
       title="What is included in Coworking Z"
       contentClassName={styles.content}
     >
-      <ProductOverview
-        onClick={clickHandler}
-        position={0}
-        primaryImage={imageProduct1}
-        secondaryImage={imageProduct2}
-      />
-      <ProductOverview
-        onClick={clickHandler}
-        position={1}
-        primaryImage={imageProduct2}
-        secondaryImage={imageProduct3}
-      />
-      <ProductOverview
-        onClick={clickHandler}
-        position={2}
-        primaryImage={imageProduct3}
-      />
+      {trappes.map((trappe) => (
+        <ProductOverview
+          key={trappe.id}
+          onClick={clickHandler(trappe.id)}
+          trappe={trappe}
+        />
+      ))}
     </Section>
   );
 };
