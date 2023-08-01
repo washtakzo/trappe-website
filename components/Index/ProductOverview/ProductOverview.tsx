@@ -38,7 +38,7 @@ const ProductOverview = ({ trappe, onClick }: Props) => {
       <div className={styles["text-container"]}>
         <h3 className={styles["text-container__title"]}>Trappe Etanche</h3>
         <p className={styles["text-container__text"] + " text-secondary-600"}>
-          {trappe.shortDescription}
+          {trappe.short_description}
         </p>
         <CustomButton
           className={
