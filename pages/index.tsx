@@ -38,10 +38,10 @@ export default function Home({ trappes }: { trappes: Trappe[] }) {
 export const getStaticProps: GetStaticProps<{
   trappes: Trappe[];
 }> = async () => {
-  const response = await getAllTrappes();
-  const responseData = await response.json();
-  const trappes = responseData.data;
-  console.log(trappes);
-
-  return { props: { trappes } };
+  try {
+    const trappes = await getAllTrappes();
+    return { props: { trappes } };
+  } catch (error) {
+    return { props: { trappes: [] } };
+  }
 };

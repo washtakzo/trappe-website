@@ -12,14 +12,14 @@ import { getAllTrappes } from "../utils/http";
 import { GetStaticProps } from "next";
 
 type Props = {
-  trappes: FetchedTrappe[];
+  trappes: Trappe[];
 };
 
 const Conception = ({ trappes }: Props) => {
   const router = useRouter();
   const trappeId = router.query.id;
 
-  const [selectedTrappe, setSelectedTrappe] = React.useState<FetchedTrappe>();
+  const [selectedTrappe, setSelectedTrappe] = React.useState<Trappe>();
 
   const [selectedWidth, setSelectedWidth] = React.useState<number | undefined>(
     selectedTrappe?.min_width
@@ -92,10 +92,11 @@ export default Conception;
 export const getStaticProps: GetStaticProps<{
   trappes: Trappe[];
 }> = async () => {
-  const response = await getAllTrappes();
-  const responseData = await response.json();
-  const trappes = responseData.data;
-  console.log(trappes);
-
-  return { props: { trappes } };
+  try {
+    const trappes: Trappe[] = await getAllTrappes();
+    console.log(trappes);
+    return { props: { trappes } };
+  } catch (error) {
+    return { props: { trappes: [] } };
+  }
 };

@@ -15,6 +15,7 @@ const SectionMainProducts = ({ trappes }: { trappes: Trappe[] }) => {
 
   const clickHandler = (id: string) => () => {
     router.push({ pathname: "/conception", query: { id } });
+    console.log({ id });
   };
 
   return (

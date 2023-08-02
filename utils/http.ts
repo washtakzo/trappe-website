@@ -1,8 +1,31 @@
+import { rejects } from "assert";
+
 const API_BASE_URL = process.env.API_BASE_URL;
 const API_TRAPPES_URL = API_BASE_URL + "trappes/";
 
-export function getAllTrappes() {
-  return fetch(API_TRAPPES_URL);
+export async function getAllTrappes() {
+  const promise = new Promise<Trappe[]>(async (resolve, reject) => {
+    try {
+      const response = await fetch(API_TRAPPES_URL);
+      if (!response.ok) {
+        throw new Error(response.status + " : " + response.text);
+      }
+      const responseData = await response.json();
+
+      const trappes: FetchedTrappe[] = responseData.data;
+
+      const reformattedTrappes: Trappe[] = trappes.map((trappe) => ({
+        ...trappe,
+        prices: JSON.parse(trappe.prices),
+      }));
+
+      resolve(reformattedTrappes);
+    } catch (error) {
+      reject(error);
+    }
+  });
+
+  return promise;
 }
 
 export function postTrappe(trappe: Trappe) {

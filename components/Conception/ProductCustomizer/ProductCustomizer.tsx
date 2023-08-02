@@ -3,7 +3,7 @@ import styles from "./ProductCustomizer.module.css";
 import { getRectanglePercentages } from "../../../utils/functions/math";
 
 type Props = {
-  trappe: FetchedTrappe;
+  trappe: Trappe;
   width: number;
   height: number;
   onChangeWidth: (width: number) => void;
@@ -17,9 +17,6 @@ const ProductCustomizer = ({
   onChangeWidth,
   onChangeHeight,
 }: Props) => {
-  // const [width, setWidth] = useState(trappe.min_width);
-  // const [height, setHeight] = useState(trappe.min_height);
-
   const minWidth = trappe.min_width;
   const maxWidth = trappe.max_width;
 
@@ -32,7 +29,6 @@ const ProductCustomizer = ({
     const value = +event.target.value;
     const newWidth =
       value < minWidth ? minWidth : value > maxWidth ? maxWidth : value;
-    // setWidth(newWidth);
 
     onChangeWidth(newWidth);
   };
@@ -41,7 +37,6 @@ const ProductCustomizer = ({
     const value = +event.target.value;
     const newHeight =
       value < minHeight ? minHeight : value > maxHeight ? maxHeight : value;
-    // setHeight(newHeight);
 
     onChangeHeight(newHeight);
   };
@@ -50,7 +45,6 @@ const ProductCustomizer = ({
     const value = +event.target.value;
     const newHeight =
       value < minHeight ? minHeight : value > maxHeight ? maxHeight : value;
-    // setHeight(newHeight);
 
     onChangeHeight(newHeight);
   };
@@ -59,7 +53,6 @@ const ProductCustomizer = ({
     const value = +event.target.value;
     const newWidth =
       value < minWidth ? minWidth : value > maxWidth ? maxWidth : value;
-    // setWidth(newWidth);
 
     onChangeWidth(newWidth);
   };

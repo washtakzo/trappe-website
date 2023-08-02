@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 
 type CardValues = {
   products: Product[];
+  itemsCount: number;
   addProduct: (product: Product) => void;
   deleteProduct: (product: Product) => void;
 };
@@ -15,6 +16,7 @@ type Product = {
 
 const initialValues: CardValues = {
   products: [],
+  itemsCount: 0,
   addProduct: (product: Product) => {},
   deleteProduct: (product: Product) => {},
 };
@@ -27,6 +29,8 @@ type Props = {
 
 export const CardContextProvider = ({ children }: Props) => {
   const [products, setProducts] = useState<Product[]>([]);
+
+  const itemsCount = products.length;
 
   const addProduct = (product: Product) => {
     const productsCopy = [...products];
@@ -86,6 +90,7 @@ export const CardContextProvider = ({ children }: Props) => {
 
   const value = {
     products,
+    itemsCount,
     addProduct,
     deleteProduct,
   };

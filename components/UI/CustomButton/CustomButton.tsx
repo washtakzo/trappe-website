@@ -5,12 +5,17 @@ import styles from "./CustomButton.module.css";
 type Props = {
   children: React.ReactNode;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
+  type?: "submit";
 };
 
-const CustomButton = ({ children, className, onClick }: Props) => {
+const CustomButton = ({ children, className, onClick, type }: Props) => {
   return (
-    <button className={`${styles.button} ${className}`} onClick={onClick}>
+    <button
+      className={`${styles.button} ${className}`}
+      onClick={onClick}
+      type={type}
+    >
       {children}
     </button>
   );

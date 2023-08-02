@@ -2,14 +2,17 @@ import React from "react";
 import styles from "./PriceOverview.module.css";
 import CustomButton from "../../UI/CustomButton/CustomButton";
 import { getTrappePrice } from "../../../utils/functions/math";
+import { CardContext } from "../../../store/card-context";
 
 type Props = {
-  trappe: FetchedTrappe;
+  trappe: Trappe;
   trappeWidth: number;
   trappeHeight: number;
 };
 
 const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
+  const cardCtx = React.useContext(CardContext);
+
   const [isInstallationSelected, setIsInstallationSelected] =
     React.useState(true);
   const [isShippingSelected, setIsShippingSelected] = React.useState(false);
@@ -34,10 +37,21 @@ const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
     ? "Adresse chantier : "
     : "Adresse livraison : ";
 
+  const addProductCardHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    cardCtx.addProduct({
+      trappe: trappe,
+      quantity: 1,
+      width: trappeWidth,
+      height: trappeHeight,
+    });
+  };
+
   return (
     <section className={styles.section}>
       <h2 className="section-title">Devis</h2>
-      <form action="" className={styles.form}>
+      <form className={styles.form} onSubmit={addProductCardHandler}>
         <div className={styles["radio-choice-container"]}>
           <input
             type="radio"
@@ -68,6 +82,10 @@ const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
           <p>Code postal</p>
           <input type="number" />
         </div>
+        <div className={styles["address-container"]}>
+          <p>email</p>
+          <input type="email" />
+        </div>
         <div className={styles["price-container"]}>
           <h3>Prix</h3>
           <p>Matériel : {price}</p>
@@ -79,7 +97,7 @@ const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
           )}
           <p>Total : {total}</p>
         </div>
-        <CustomButton onClick={() => {}} className={styles.button}>
+        <CustomButton className={styles.button} type="submit">
           Valider
         </CustomButton>
       </form>

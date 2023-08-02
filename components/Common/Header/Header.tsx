@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from "./Header.module.css";
 import Cart from "../Cart/Cart";
 import BurgerButton from "../BurgerButton/BurgerButton";
@@ -7,8 +7,12 @@ import logo from "../../../assets/best-employee.png";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import { CardContext } from "../../../store/card-context";
+
 function Header() {
   const router = useRouter();
+  const cardCtx = useContext(CardContext);
+
   const [burgerBtnIsClicked, setBurgerBtnIsClicked] = useState(false);
 
   const goHome = () => {
@@ -43,7 +47,7 @@ function Header() {
         </li>
       </ul>
       <div>
-        <Cart itemCount={4} />
+        <Cart itemCount={cardCtx.itemsCount} />
         <BurgerButton
           className={styles["burger-btn"]}
           onClick={burgerClickHandler}
