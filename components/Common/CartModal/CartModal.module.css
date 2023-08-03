@@ -1,0 +1,29 @@
+.dialog {
+  width: 33%;
+  height: 100vh;
+  max-height: none;
+  background-color: hsl(var(--color-primary) / 1);
+  margin: 0 0 0 auto;
+  border: 1px black solid;
+}
+
+.cart__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem;
+  border-bottom: 1px black solid;
+}
+
+.cart__close-button {
+  background-color: hsl(var(--color-secondary) / 1);
+  color: rgb(255, 255, 255);
+  border-radius: 50%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  padding: 0rem !important;
+}

@@ -87,7 +87,7 @@
   .link-container {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     position: absolute;
     height: 15rem;
     width: 100%;
