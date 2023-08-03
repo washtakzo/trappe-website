@@ -15,7 +15,13 @@ const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
 
   const [isInstallationSelected, setIsInstallationSelected] =
     React.useState(true);
+
   const [isShippingSelected, setIsShippingSelected] = React.useState(false);
+
+  const [address, setAddress] = React.useState("");
+  const [city, setCity] = React.useState("");
+  const [postalCode, setPostalCode] = React.useState("");
+  const [email, setEmail] = React.useState("");
 
   const price = getTrappePrice(trappe, trappeWidth, trappeHeight);
   const option = isInstallationSelected
@@ -45,6 +51,13 @@ const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
       quantity: 1,
       width: trappeWidth,
       height: trappeHeight,
+      info: {
+        address,
+        city,
+        email,
+        postalCode,
+        method: isInstallationSelected ? "installation" : "shipping",
+      },
     });
   };
 
@@ -72,19 +85,35 @@ const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
         </div>
         <div className={styles["address-container"]}>
           <p>{addressText}</p>
-          <input type="text" />
+          <input
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
         </div>
         <div className={styles["address-container"]}>
           <p>Ville</p>
-          <input type="text" />
+          <input
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
         </div>
         <div className={styles["address-container"]}>
           <p>Code postal</p>
-          <input type="number" />
+          <input
+            type="number"
+            value={postalCode}
+            onChange={(e) => setPostalCode(e.target.value)}
+          />
         </div>
         <div className={styles["address-container"]}>
           <p>email</p>
-          <input type="email" />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div className={styles["price-container"]}>
           <h3>Prix</h3>

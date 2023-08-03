@@ -16,7 +16,14 @@
   border-bottom: 1px black solid;
 }
 
-.cart__close-button {
+.cart__product {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px black solid;
+  padding: 1.4rem;
+}
+
+.cart__product__close-button {
   background-color: hsl(var(--color-secondary) / 1);
   color: rgb(255, 255, 255);
   border-radius: 50%;
@@ -26,4 +33,12 @@
   align-items: center;
   width: 2.4rem;
   padding: 0rem !important;
+}
+
+.cart__product__image-container {
+  position: relative;
+  aspect-ratio: 1;
+  width: 8rem;
+  border-radius: 10%;
+  overflow: hidden;
 }

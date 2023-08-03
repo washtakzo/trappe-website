@@ -12,6 +12,7 @@ type Product = {
   width: number;
   height: number;
   quantity: number;
+  info: BuyInfo | null;
 };
 
 const initialValues: CardValues = {
