@@ -32,11 +32,18 @@ type FetchedTrappe = {
   long_description: string;
   images: string[];
 };
-
 type BuyInfo = {
   address: string;
   city: string;
   postalCode: string;
   email: string;
   method: "installation" | "shipping";
+};
+
+type Product = {
+  trappe: Trappe;
+  width: number;
+  height: number;
+  quantity: number;
+  info: BuyInfo | null;
 };

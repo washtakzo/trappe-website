@@ -1,18 +1,11 @@
 import React, { createContext, useState } from "react";
+import { productsAreEqual } from "../utils/functions/math";
 
 type CardValues = {
   products: Product[];
   itemsCount: number;
   addProduct: (product: Product) => void;
   deleteProduct: (product: Product) => void;
-};
-
-type Product = {
-  trappe: Trappe;
-  width: number;
-  height: number;
-  quantity: number;
-  info: BuyInfo | null;
 };
 
 const initialValues: CardValues = {
@@ -37,16 +30,11 @@ export const CardContextProvider = ({ children }: Props) => {
     const productsCopy = [...products];
 
     const productIsAlreadyInCard =
-      productsCopy.findIndex(
-        (p) =>
-          p.trappe.id === product.trappe.id &&
-          p.width === product.width &&
-          p.height === product.height
-      ) >= 0;
+      productsCopy.findIndex((p) => productsAreEqual(p, product)) >= 0;
 
     if (productIsAlreadyInCard) {
       const updatedProducts = productsCopy.map((p) => {
-        if (p.trappe.id === product.trappe.id) {
+        if (productsAreEqual(p, product)) {
           return {
             ...p,
             quantity: p.quantity + 1,

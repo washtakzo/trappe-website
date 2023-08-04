@@ -42,3 +42,12 @@ export function getTrappePrice(trappe: Trappe, width: number, height: number) {
 
   return +price.toFixed(2);
 }
+
+export function productsAreEqual(product1: Product, product2: Product) {
+  const product1NoQuantity: Product = { ...product1, quantity: 0 };
+  const product2NoQuantity: Product = { ...product2, quantity: 0 };
+
+  return (
+    JSON.stringify(product1NoQuantity) === JSON.stringify(product2NoQuantity)
+  );
+}
