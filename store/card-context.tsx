@@ -50,13 +50,11 @@ export const CardContextProvider = ({ children }: Props) => {
   }, [contextRenderCount]);
 
   const openCartDialog = () => {
-    console.log("openCartDialog");
     console.log(dialogCartEl);
     dialogCartEl?.current?.showModal();
   };
 
   const closeCartDialog = () => {
-    console.log("closeCartDialog");
     dialogCartEl?.current?.close();
   };
 
