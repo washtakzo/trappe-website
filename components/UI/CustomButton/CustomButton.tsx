@@ -9,7 +9,7 @@ type Props = {
   type?: "submit";
 };
 
-const CustomButton = ({ children, className, onClick, type }: Props) => {
+const CustomButton = ({ children, className = "", onClick, type }: Props) => {
   return (
     <button
       className={`${styles.button} ${className}`}

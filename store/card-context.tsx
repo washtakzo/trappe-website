@@ -24,7 +24,9 @@ type Props = {
 export const CardContextProvider = ({ children }: Props) => {
   const [products, setProducts] = useState<Product[]>([]);
 
-  const itemsCount = products.length;
+  const itemsCount = products.reduce((acc, product) => {
+    return acc + product.quantity;
+  }, 0);
 
   const addProduct = (product: Product) => {
     const productsCopy = [...products];

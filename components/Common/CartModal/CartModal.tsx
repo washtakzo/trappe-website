@@ -35,7 +35,11 @@ const CartModal = React.forwardRef(function CardModal(
 
   const itemCount = cardCtx.itemsCount;
 
-  const products = cardCtx.products;
+  // const products = cardCtx.products;
+  const [products, setProducts] = React.useState<Product[]>([]);
+  React.useEffect(() => {
+    setProducts(cardCtx.products);
+  }, [cardCtx]);
 
   React.useEffect(() => {
     if (itemCount > 0) {
@@ -44,35 +48,33 @@ const CartModal = React.forwardRef(function CardModal(
   }, [itemCount, dialogRef]);
 
   return (
-    <Portal domElementId="__next">
-      <dialog className={styles.dialog} ref={dialogRef}>
-        <div className={styles.cart}>
-          <div className={styles["cart__header"]}>
-            <h2>Panier</h2>
-            <CustomButton
-              className={styles["cart__close-button"]}
-              onClick={() => dialogRef?.current?.close()}
-            >
-              X
-            </CustomButton>
-          </div>
-          <div className={styles["cart__products-container"]}>
-            {products.map((product) => (
-              <CartItem key={product.trappe.id} product={product} />
-            ))}
-          </div>
-          <div className={styles["cart__footer"]}>
-            <div className={styles["cart__footer__total-container"]}>
-              <p>Total</p>
-              <p>123 €</p>
-            </div>
-            <CustomButton className={styles["cart__footer__paiment-button"]}>
-              Paiementxs
-            </CustomButton>
-          </div>
+    <dialog className={styles.dialog} ref={dialogRef}>
+      <div className={styles.cart}>
+        <div className={styles["cart__header"]}>
+          <h2>Panier</h2>
+          <CustomButton
+            className={styles["cart__header__close-button"]}
+            onClick={() => dialogRef?.current?.close()}
+          >
+            X
+          </CustomButton>
         </div>
-      </dialog>
-    </Portal>
+        <div className={styles["cart__products-container"]}>
+          {products.map((product) => (
+            <CartItem key={product.trappe.id} product={product} />
+          ))}
+        </div>
+        <div className={styles["cart__footer"]}>
+          <div className={styles["cart__footer__total-container"]}>
+            <p>Total</p>
+            <p>123 €</p>
+          </div>
+          <CustomButton className={styles["cart__footer__paiment-button"]}>
+            Paiementss
+          </CustomButton>
+        </div>
+      </div>
+    </dialog>
   );
 });
 
