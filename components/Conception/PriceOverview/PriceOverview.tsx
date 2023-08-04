@@ -59,6 +59,8 @@ const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
         method: isInstallationSelected ? "installation" : "shipping",
       },
     });
+
+    cardCtx.openCartDialog();
   };
 
   return (
