@@ -45,65 +45,78 @@ const CartModal = React.forwardRef(function CardModal(
   return (
     <Portal domElementId="__next">
       <dialog className={styles.dialog} ref={dialogRef}>
-        <div className={styles["cart__header"]}>
-          <h2>Panier</h2>
-          <CustomButton
-            className={styles["cart__close-button"]}
-            onClick={() => dialogRef?.current?.close()}
-          >
-            X
-          </CustomButton>
-        </div>
-        <div>
-          {products.map((product) => {
-            const trappePrice = getTrappePrice(
-              product.trappe,
-              product.width,
-              product.height
-            );
+        <div className={styles.cart}>
+          <div className={styles["cart__header"]}>
+            <h2>Panier</h2>
+            <CustomButton
+              className={styles["cart__close-button"]}
+              onClick={() => dialogRef?.current?.close()}
+            >
+              X
+            </CustomButton>
+          </div>
+          <div className={styles["cart__products-container"]}>
+            {products.map((product) => {
+              const trappePrice = getTrappePrice(
+                product.trappe,
+                product.width,
+                product.height
+              );
 
-            const method = product.info?.method;
-            const address = product.info?.address;
-            const city = product.info?.city;
-            const postalCode = product.info?.postalCode;
-            const feeText =
-              method === "installation"
-                ? "Frais d'installation : "
-                : "Frais de livraison : ";
-            const fee: number =
-              method === "installation"
-                ? product.trappe.setup_price
-                : product.trappe.shipping_price;
+              const method = product.info?.method;
+              const address = product.info?.address;
+              const city = product.info?.city;
+              const postalCode = product.info?.postalCode;
+              const feeText =
+                method === "installation"
+                  ? "Frais d'installation : "
+                  : "Frais de livraison : ";
+              const fee: number =
+                method === "installation"
+                  ? product.trappe.setup_price
+                  : product.trappe.shipping_price;
 
-            return (
-              <div key={product.trappe.id} className={styles["cart__product"]}>
-                <div className={styles["cart__product__image-container"]}>
-                  <Image
-                    alt={product.trappe.name}
-                    src={product.trappe.images[0]}
-                    fill
-                    className={styles["cart__product__image"]}
-                  />
+              return (
+                <div
+                  key={product.trappe.id}
+                  className={styles["cart__product"]}
+                >
+                  <div className={styles["cart__product__image-container"]}>
+                    <Image
+                      alt={product.trappe.name}
+                      src={product.trappe.images[0]}
+                      fill
+                      className={styles["cart__product__image"]}
+                    />
+                  </div>
+                  <div>
+                    <h3>{`${product.trappe.name} ${product.width}X${product.height}`}</h3>
+                    <p>
+                      {method === "shipping"
+                        ? "Livraison"
+                        : "Installation sur site"}
+                    </p>
+                    <p>Adresse : {address}</p>
+                    <p>Ville : {city}</p>
+                    <p>Code Postal : {postalCode}</p>
+                    <p>Materiels : {trappePrice} €</p>
+                    <p>{feeText + fee} €</p>
+                    <p>Total : {+trappePrice + fee} €</p>
+                  </div>
                 </div>
-                <div>
-                  <h3>{`${product.trappe.name} ${product.width}X${product.height}`}</h3>
-                  <p>
-                    {method === "shipping"
-                      ? "Livraison"
-                      : "Installation sur site"}
-                  </p>
-                  <p>Adresse : {address}</p>
-                  <p>Ville : {city}</p>
-                  <p>Code Postal : {postalCode}</p>
-                  <p>Materiel : {trappePrice} €</p>
-                  <p>{feeText + fee} €</p>
-                  <p>Total : {+trappePrice + fee} €</p>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+          <div className={styles["cart__footer"]}>
+            <div className={styles["cart__footer__total-container"]}>
+              <p>Total</p>
+              <p>123 €</p>
+            </div>
+            <CustomButton className={styles["cart__footer__paiment-button"]}>
+              Paiement
+            </CustomButton>
+          </div>
         </div>
-        <div>Footer</div>
       </dialog>
     </Portal>
   );
