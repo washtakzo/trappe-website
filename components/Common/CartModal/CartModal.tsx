@@ -27,34 +27,20 @@ const Portal = ({ children, domElementId }: PortalProps) => {
   return render;
 };
 
-const CartModal = React.forwardRef(function CardModal(
-  _,
-  dialogRef: React.ForwardedRef<HTMLDialogElement>
-) {
+const CartModal = () => {
   const cardCtx = useContext(CardContext);
 
-  const itemCount = cardCtx.itemsCount;
-
-  // const products = cardCtx.products;
-  const [products, setProducts] = React.useState<Product[]>([]);
-  React.useEffect(() => {
-    setProducts(cardCtx.products);
-  }, [cardCtx]);
-
-  React.useEffect(() => {
-    if (itemCount > 0) {
-      dialogRef?.current?.showModal();
-    }
-  }, [itemCount, dialogRef]);
+  const products = cardCtx.products;
 
   return (
-    <dialog className={styles.dialog} ref={dialogRef}>
+    <dialog className={styles.dialog} id="cart-dialog">
       <div className={styles.cart}>
         <div className={styles["cart__header"]}>
           <h2>Panier</h2>
           <CustomButton
             className={styles["cart__header__close-button"]}
-            onClick={() => dialogRef?.current?.close()}
+            // onClick={() => dialogRef?.current?.close()}
+            onClick={cardCtx.closeCartDialog}
           >
             X
           </CustomButton>
@@ -76,6 +62,6 @@ const CartModal = React.forwardRef(function CardModal(
       </div>
     </dialog>
   );
-});
+};
 
 export default CartModal;

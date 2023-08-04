@@ -53,7 +53,7 @@ function Header() {
         <div>
           <Cart
             itemCount={cardCtx.itemsCount}
-            onClick={() => dialogRef.current?.showModal()}
+            onClick={cardCtx.openCartDialog}
           />
           <BurgerButton
             className={styles["burger-btn"]}
@@ -61,7 +61,7 @@ function Header() {
           />
         </div>
       </header>
-      <CartModal ref={dialogRef} />
+      <CartModal />
     </>
   );
 }
