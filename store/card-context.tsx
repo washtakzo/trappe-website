@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { productsAreEqual } from "../utils/functions";
+import { getTrappePrice, productsAreEqual } from "../utils/functions";
 
 type CardValues = {
   products: Product[];
@@ -8,6 +8,7 @@ type CardValues = {
   deleteProduct: (product: Product) => void;
   openCartDialog: () => void;
   closeCartDialog: () => void;
+  totalAmount: number;
 };
 
 const initialValues: CardValues = {
@@ -17,6 +18,7 @@ const initialValues: CardValues = {
   deleteProduct: (product: Product) => {},
   openCartDialog: () => {},
   closeCartDialog: () => {},
+  totalAmount: 0,
 };
 
 export const CardContext = createContext(initialValues);
@@ -35,13 +37,13 @@ let contextRenderCount = 0;
 export const CardContextProvider = ({ children }: Props) => {
   const [products, setProducts] = useState<Product[]>([]);
 
-  console.log("redering context...");
+  console.log("rendering context...");
   contextRenderCount++;
 
   //useRef n'est pas ré évalué à chaque render
   const dialogCartEl = React.useRef<HTMLDialogElement | null>(null);
   React.useEffect(() => {
-    console.log("context use effect ...");
+    console.log("rendering context use effect ...");
     //document est inacessible en dehors de useEffect
     //Ceci car NextJs s'execute côté serveur
     dialogCartEl.current = document.getElementById(
@@ -113,6 +115,19 @@ export const CardContextProvider = ({ children }: Props) => {
     }
   };
 
+  const totalAmount = products.reduce((acc, product) => {
+    const fee =
+      product.info?.method === "installation"
+        ? product.trappe.setup_price
+        : product.trappe.shipping_price;
+
+    const productPrice =
+      product.quantity *
+      (getTrappePrice(product.trappe, product.width, product.height) + fee);
+
+    return acc + productPrice;
+  }, 0);
+
   const value = {
     products,
     itemsCount,
@@ -120,6 +135,7 @@ export const CardContextProvider = ({ children }: Props) => {
     deleteProduct,
     openCartDialog,
     closeCartDialog,
+    totalAmount,
   };
 
   return <CardContext.Provider value={value}>{children}</CardContext.Provider>;

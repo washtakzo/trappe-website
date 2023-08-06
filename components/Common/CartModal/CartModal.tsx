@@ -53,7 +53,7 @@ const CartModal = () => {
         <div className={styles["cart__footer"]}>
           <div className={styles["cart__footer__total-container"]}>
             <p>Total</p>
-            <p>123 €</p>
+            <p>{cardCtx.totalAmount}</p>
           </div>
           <CustomButton className={styles["cart__footer__paiment-button"]}>
             Paiementss
