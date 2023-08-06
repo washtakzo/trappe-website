@@ -47,16 +47,19 @@ const CartModal = () => {
         </div>
         <div className={styles["cart__products-container"]}>
           {products.map((product) => (
-            <CartItem key={product.trappe.id} product={product} />
+            <CartItem
+              key={`${product.trappe.id} ${product.width}x${product.height}`}
+              product={product}
+            />
           ))}
         </div>
         <div className={styles["cart__footer"]}>
           <div className={styles["cart__footer__total-container"]}>
             <p>Total</p>
-            <p>{cardCtx.totalAmount}</p>
+            <p>{cardCtx.totalAmount.toFixed(2)} €</p>
           </div>
           <CustomButton className={styles["cart__footer__paiment-button"]}>
-            Paiementss
+            Paiement
           </CustomButton>
         </div>
       </div>
