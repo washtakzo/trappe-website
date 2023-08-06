@@ -5,7 +5,7 @@ import styles from "./CartModal.module.css";
 import CustomButton from "../../UI/CustomButton/CustomButton";
 import { CardContext } from "../../../store/card-context";
 import Image from "next/image";
-import { getTrappePrice } from "../../../utils/functions/math";
+import { getTrappePrice } from "../../../utils/functions";
 import CartItem from "../CartItem/CartItem";
 
 type PortalProps = {

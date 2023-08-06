@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import styles from "./ProductCustomizer.module.css";
-import { getRectanglePercentages } from "../../../utils/functions/math";
+import { getRectanglePercentages } from "../../../utils/functions";
 
 type Props = {
   trappe: Trappe;

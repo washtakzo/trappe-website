@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { productsAreEqual } from "../utils/functions/math";
+import { productsAreEqual } from "../utils/functions";
 
 type CardValues = {
   products: Product[];

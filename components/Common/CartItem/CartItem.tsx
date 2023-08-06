@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./CartItem.module.css";
-import { getTrappePrice } from "../../../utils/functions/math";
+import { getTrappePrice } from "../../../utils/functions";
 import Image from "next/image";
 
 type Props = {

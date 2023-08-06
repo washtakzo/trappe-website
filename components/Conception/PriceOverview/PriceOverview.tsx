@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./PriceOverview.module.css";
 import CustomButton from "../../UI/CustomButton/CustomButton";
-import { getTrappePrice } from "../../../utils/functions/math";
+import { getTrappePrice } from "../../../utils/functions";
 import { CardContext } from "../../../store/card-context";
 
 type Props = {
