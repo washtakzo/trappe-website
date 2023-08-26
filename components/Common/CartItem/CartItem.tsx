@@ -17,7 +17,7 @@ const CartItem = ({ product }: Props) => {
   let trappePrice = getTrappePrice(
     product.trappe,
     product.width,
-    product.height
+    product.length
   );
   trappePrice = trappePrice * product.quantity;
 
@@ -65,7 +65,7 @@ const CartItem = ({ product }: Props) => {
         </div>
       </div>
       <div>
-        <h3>{`${product.trappe.name} ${product.width}X${product.height}`}</h3>
+        <h3>{`${product.trappe.name} ${product.width}X${product.length}`}</h3>
         <p>{method === "shipping" ? "Livraison" : "Installation sur site"}</p>
         <p>Adresse : {address}</p>
         <p>Ville : {city}</p>

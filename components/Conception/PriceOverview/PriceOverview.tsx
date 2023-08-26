@@ -7,10 +7,10 @@ import { CardContext } from "../../../store/card-context";
 type Props = {
   trappe: Trappe;
   trappeWidth: number;
-  trappeHeight: number;
+  trappeLength: number;
 };
 
-const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
+const PriceOverview = ({ trappe, trappeWidth, trappeLength }: Props) => {
   const cardCtx = React.useContext(CardContext);
 
   const [isInstallationSelected, setIsInstallationSelected] =
@@ -23,7 +23,7 @@ const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
   const [postalCode, setPostalCode] = React.useState("");
   const [email, setEmail] = React.useState("");
 
-  const price = getTrappePrice(trappe, trappeWidth, trappeHeight);
+  const price = getTrappePrice(trappe, trappeWidth, trappeLength);
   const option = isInstallationSelected
     ? trappe.setup_price
     : trappe.shipping_price;
@@ -50,7 +50,7 @@ const PriceOverview = ({ trappe, trappeWidth, trappeHeight }: Props) => {
       trappe: trappe,
       quantity: 1,
       width: trappeWidth,
-      height: trappeHeight,
+      length: trappeLength,
       info: {
         address,
         city,

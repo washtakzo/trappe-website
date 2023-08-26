@@ -48,7 +48,7 @@ const CartModal = () => {
         <div className={styles["cart__products-container"]}>
           {products.map((product) => (
             <CartItem
-              key={`${product.trappe.id} ${product.width}x${product.height}`}
+              key={`${product.trappe.id} ${product.width}x${product.length}`}
               product={product}
             />
           ))}

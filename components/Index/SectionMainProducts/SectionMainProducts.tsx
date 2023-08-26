@@ -3,12 +3,7 @@ import styles from "./SectionMainProducts.module.css";
 
 import ProductOverview from "../ProductOverview/ProductOverview";
 import Section from "../../UI/Section/Section";
-import imageProduct1 from "../../../assets/product1.jpg";
-import imageProduct2 from "../../../assets/product2.jpg";
-import imageProduct3 from "../../../assets/product3.jpg";
 import { useRouter } from "next/router";
-
-import { DUMMY_DATA } from "../../../utils/data";
 
 const SectionMainProducts = ({ trappes }: { trappes: Trappe[] }) => {
   const router = useRouter();

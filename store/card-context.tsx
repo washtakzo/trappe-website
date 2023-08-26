@@ -118,7 +118,7 @@ export const CardContextProvider = ({ children }: Props) => {
 
     const productPrice =
       product.quantity *
-      (getTrappePrice(product.trappe, product.width, product.height) + fee);
+      (getTrappePrice(product.trappe, product.width, product.length) + fee);
 
     return acc + productPrice;
   }, 0);
