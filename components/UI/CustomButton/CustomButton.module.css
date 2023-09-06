@@ -14,6 +14,11 @@
   transform: translateY(-4px);
 }
 
+.back-white {
+  color: hsl(var(--color-primary) / 1);
+  background-color: hsl(var(--color-secondary) / 1);
+}
+
 /*sm': '640px',*/
 @media (min-width: 640px) {
   .button {

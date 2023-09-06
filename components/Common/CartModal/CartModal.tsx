@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { createPortal } from "react-dom";
+import { useRouter } from "next/router";
 
 import styles from "./CartModal.module.css";
 import CustomButton from "../../UI/CustomButton/CustomButton";
@@ -8,29 +9,14 @@ import Image from "next/image";
 import { getTrappePrice } from "../../../utils/functions";
 import CartItem from "../CartItem/CartItem";
 
-type PortalProps = {
-  children: React.ReactNode;
-  domElementId: string;
-};
-
-const Portal = ({ children, domElementId }: PortalProps) => {
-  const [render, setRender] = React.useState<React.ReactPortal | null>(null);
-
-  React.useEffect(() => {
-    const domEl = document.getElementById(domElementId);
-
-    if (!domEl) return;
-
-    setRender(createPortal(children, domEl));
-  }, []);
-
-  return render;
-};
-
 const CartModal = () => {
   const cardCtx = useContext(CardContext);
-
   const products = cardCtx.products;
+
+  const router = useRouter();
+  const goCheckout = () => {
+    router.push("/checkout");
+  };
 
   return (
     <dialog className={styles.dialog} id="cart-dialog">
@@ -58,7 +44,11 @@ const CartModal = () => {
             <p>Total</p>
             <p>{cardCtx.totalAmount.toFixed(2)} €</p>
           </div>
-          <CustomButton className={styles["cart__footer__paiment-button"]}>
+          <CustomButton
+            isBlack={true}
+            className={styles["cart__footer__paiment-button"]}
+            onClick={goCheckout}
+          >
             Paiement
           </CustomButton>
         </div>

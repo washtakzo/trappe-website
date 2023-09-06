@@ -7,12 +7,21 @@ type Props = {
   className?: string;
   onClick?: () => void;
   type?: "submit";
+  isBlack?: boolean;
 };
 
-const CustomButton = ({ children, className = "", onClick, type }: Props) => {
+const CustomButton = ({
+  children,
+  className = "",
+  onClick,
+  type,
+  isBlack,
+}: Props) => {
   return (
     <button
-      className={`${styles.button} ${className}`}
+      className={`${styles.button} ${
+        isBlack && styles["back-white"]
+      } ${className}`}
       onClick={onClick}
       type={type}
     >

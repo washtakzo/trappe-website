@@ -53,8 +53,6 @@
 }
 .cart__footer__paiment-button {
   margin: auto;
-  color: hsl(var(--color-primary) / 1);
-  background-color: hsl(var(--color-secondary) / 1);
   min-width: 0;
   width: 60%;
 }

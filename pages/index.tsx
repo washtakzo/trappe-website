@@ -13,6 +13,7 @@ import { getAllTrappes, postTrappe } from "../utils/http";
 export default function Home({ trappes }: { trappes: Trappe[] }) {
   console.log({ trappes });
 
+  //TODO:delete
   //TODELETE:test
   const postTrappeHandler = () => {
     const trappeToPost = {
