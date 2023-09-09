@@ -42,7 +42,8 @@ const PaimentForm = () => {
   //TODO:Pour les moyens de paiement mettre des petit carré a selectionner
   //TODO:V2 : voir si possible de mettre adresse livraison et facturation différente sur stripe
   //TODO:voir s'il est meilleur de faire le tableau de requapitulatif de commande dans le corps du mail plutot qu'en PDF
-  //TODO:Fix Header
+  //TODO:Pré remplir les champs lors du paiement
+  //TODO:faire disparaitre le panier lors du click en dehors de la modale
   const cardCtx = useContext(CardContext);
 
   const { sendRequest, isLoading, data, error, resetError } = useHttp();

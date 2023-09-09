@@ -18,14 +18,23 @@ const CartModal = () => {
     router.push("/checkout");
   };
 
+  const clickBackdropHandler = (event: React.MouseEvent<HTMLDialogElement>) => {
+    if ((event.target as HTMLDialogElement).nodeName === "DIALOG") {
+      cardCtx.closeCartDialog();
+    }
+  };
+
   return (
-    <dialog className={styles.dialog} id="cart-dialog">
+    <dialog
+      className={styles.dialog}
+      id="cart-dialog"
+      onClick={clickBackdropHandler}
+    >
       <div className={styles.cart}>
         <div className={styles["cart__header"]}>
           <h2>Panier</h2>
           <CustomButton
             className={styles["cart__header__close-button"]}
-            // onClick={() => dialogRef?.current?.close()}
             onClick={cardCtx.closeCartDialog}
           >
             X
