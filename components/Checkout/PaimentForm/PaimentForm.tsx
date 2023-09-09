@@ -34,9 +34,15 @@ type Customer = {
   city: string;
   postalCode: number;
   email: string;
+  phoneNumber: string;
 };
 
 const PaimentForm = () => {
+  //TODO:mettre un résumer de la commande au dessus en mobile et a droite en desktop avec le total du prix
+  //TODO:Pour les moyens de paiement mettre des petit carré a selectionner
+  //TODO:V2 : voir si possible de mettre adresse livraison et facturation différente sur stripe
+  //TODO:voir s'il est meilleur de faire le tableau de requapitulatif de commande dans le corps du mail plutot qu'en PDF
+  //TODO:Fix Header
   const cardCtx = useContext(CardContext);
 
   const { sendRequest, isLoading, data, error, resetError } = useHttp();
@@ -54,6 +60,7 @@ const PaimentForm = () => {
       lastName: "",
       firstName: "",
       email: defaultEmail,
+      phoneNumber: "",
       address: defaultAddress,
       city: defaultCity,
       postalCode: defaultPostalCode,
@@ -81,6 +88,9 @@ const PaimentForm = () => {
     console.log(formData);
     resetError();
 
+    //TODO:Gérer le numero de telephone côté backend
+    //TODO:Customer c'est soit nom ou raison social
+    //TODO:Adresse livraison et adresse de facturation peuvent etre differente
     const customer: Customer = {
       firstName: formData.firstName,
       lastName: formData.lastName,
@@ -88,6 +98,7 @@ const PaimentForm = () => {
       city: formData.city,
       postalCode: +formData.postalCode,
       email: formData.email,
+      phoneNumber: formData.phoneNumber,
     };
 
     const orders: Orders = cardCtx.products.map((p) => {
@@ -139,6 +150,28 @@ const PaimentForm = () => {
         type="email"
         placeholder="Email"
         {...(register("email"), { required: true })}
+      />
+      <input
+        type="number"
+        placeholder="Téléphone principale"
+        {...(register("phoneNumber"), { required: true })}
+      />
+      {/* TODO:gérer le style dans le CSS */}
+      <p
+        style={{
+          fontSize: "0.9rem",
+          textAlign: "left",
+          width: "100%",
+          color: "",
+        }}
+      >
+        Le numéro de téléphone est necessaire pour le livreur
+      </p>
+
+      <input
+        type="number"
+        placeholder="Téléphone secondaire"
+        {...(register("phoneNumber"), { required: false })}
       />
       <input
         type="text"
