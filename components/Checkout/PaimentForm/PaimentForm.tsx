@@ -43,7 +43,6 @@ const PaimentForm = () => {
   //TODO:V2 : voir si possible de mettre adresse livraison et facturation différente sur stripe
   //TODO:voir s'il est meilleur de faire le tableau de requapitulatif de commande dans le corps du mail plutot qu'en PDF
   //TODO:Pré remplir les champs lors du paiement
-  //TODO:faire disparaitre le panier lors du click en dehors de la modale
   const cardCtx = useContext(CardContext);
 
   const { sendRequest, isLoading, data, error, resetError } = useHttp();
@@ -157,15 +156,7 @@ const PaimentForm = () => {
         placeholder="Téléphone principale"
         {...(register("phoneNumber"), { required: true })}
       />
-      {/* TODO:gérer le style dans le CSS */}
-      <p
-        style={{
-          fontSize: "0.9rem",
-          textAlign: "left",
-          width: "100%",
-          color: "",
-        }}
-      >
+      <p className={styles["input-instruction"]}>
         Le numéro de téléphone est necessaire pour le livreur
       </p>
 

@@ -29,6 +29,12 @@
   margin: auto;
 }
 
+.input-instruction {
+  font-size: 0.9rem;
+  text-align: left;
+  width: 100%;
+}
+
 /*sm': '640px',*/
 @media (min-width: 640px) {
   .paiment-form {
