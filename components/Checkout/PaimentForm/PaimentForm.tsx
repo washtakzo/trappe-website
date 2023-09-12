@@ -7,6 +7,7 @@ import { useForm, FieldValues } from "react-hook-form";
 
 import { CardContext } from "../../../store/card-context";
 import useHttp from "../../../hooks/use-http";
+import CardIcon from "../../UI/CardIcon/CardIcon";
 const API_BASE_URL = process.env.API_BASE_URL;
 
 enum PaimentMethod {
@@ -68,6 +69,12 @@ const PaimentForm = () => {
     },
   });
 
+  const [isPaimentMethodChoose, setIsPaimentMethodChoose] =
+    React.useState(false);
+
+  const [submitButtonHasBeenPressed, setSubmitButtonHasBeenPressed] =
+    React.useState(false);
+
   const PayByCard = (orders: Orders) => {
     sendRequest(API_BASE_URL + "stripe/checkout", {
       method: "POST",
@@ -85,7 +92,10 @@ const PaimentForm = () => {
   };
 
   const submitHandler = (formData: FieldValues) => {
-    console.log(formData);
+    console.log({ formData });
+
+    setSubmitButtonHasBeenPressed(true);
+
     resetError();
 
     //TODO:Gérer le numero de telephone côté backend
@@ -117,9 +127,11 @@ const PaimentForm = () => {
     });
 
     if (formData.paimentMethod === PaimentMethod.CARD) {
-      PayByCard(orders);
+      //TODO:uncomment
+      //   PayByCard(orders);
     } else if (formData.paimentMethod === PaimentMethod.TRANSFERT) {
-      PayByTransfert(customer, orders);
+      //TODO:uncomment
+      //   PayByTransfert(customer, orders);
     }
   };
 
@@ -182,17 +194,42 @@ const PaimentForm = () => {
       />
       <div className={styles["paiment-container"]}>
         <p>Moyen de paiment :</p>
-        <select
+        {/* <select
           id="paiment-select"
           {...register("paimentMethod", { required: true })}
         >
           <option value={PaimentMethod.CARD}>Carte bancaire</option>
           <option value={PaimentMethod.TRANSFERT}>Virement bancaire</option>
-        </select>
+        </select> */}
+        <div className={styles["radio-container"]}>
+          <input
+            style={{ "--title": "'CB'" } as React.CSSProperties}
+            type="radio"
+            value={PaimentMethod.CARD}
+            id="radio-card"
+            {...register("paimentMethod", { required: true })}
+            onClick={() => setIsPaimentMethodChoose(true)}
+          />
+          <input
+            style={{ "--title": "'Virement'" } as React.CSSProperties}
+            type="radio"
+            value={PaimentMethod.TRANSFERT}
+            id="radio-transfert"
+            {...register("paimentMethod", { required: true })}
+            onClick={() => setIsPaimentMethodChoose(true)}
+          />
+        </div>
+        {!isPaimentMethodChoose && submitButtonHasBeenPressed && (
+          <p>Veuillez choisir un moyen de paiement</p>
+        )}
       </div>
       {isLoading && <p>loading...</p>}
       {!isLoading && (
-        <CustomButton isBlack={true} type="submit">
+        <CustomButton
+          isBlack={true}
+          type="submit"
+          onClick={() => setSubmitButtonHasBeenPressed(true)}
+        >
           Je Commande
         </CustomButton>
       )}

@@ -23,16 +23,67 @@
   flex-direction: column;
   gap: 0.4rem;
   margin: 1rem 0;
+  width: 100%;
 }
 
 .paiment-container p {
   margin: auto;
+  text-align: center;
 }
 
 .input-instruction {
   font-size: 0.9rem;
   text-align: left;
   width: 100%;
+}
+
+.radio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10%;
+}
+
+.radio-container label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px black solid;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.radio-container input {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  width: 8rem;
+  height: 4rem;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.radio-container input:checked {
+  background-color: rgb(28, 27, 27);
+  color: white;
+}
+
+.radio-container input:before {
+  content: var(--title);
+  font-weight: 500;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*sm': '640px',*/
