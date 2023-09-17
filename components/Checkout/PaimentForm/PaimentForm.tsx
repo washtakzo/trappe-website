@@ -7,7 +7,7 @@ import { useForm, FieldValues } from "react-hook-form";
 
 import { CardContext } from "../../../store/card-context";
 import useHttp from "../../../hooks/use-http";
-import CardIcon from "../../UI/CardIcon/CardIcon";
+
 const API_BASE_URL = process.env.API_BASE_URL;
 
 enum PaimentMethod {
@@ -40,10 +40,10 @@ type Customer = {
 
 const PaimentForm = () => {
   //TODO:mettre un résumer de la commande au dessus en mobile et a droite en desktop avec le total du prix
-  //TODO:Pour les moyens de paiement mettre des petit carré a selectionner
   //TODO:V2 : voir si possible de mettre adresse livraison et facturation différente sur stripe
   //TODO:voir s'il est meilleur de faire le tableau de requapitulatif de commande dans le corps du mail plutot qu'en PDF
   //TODO:Pré remplir les champs lors du paiement
+  //TODO:2 formulaire pour pro/particulier le pro a une raison social et une adresse de facturation
   const cardCtx = useContext(CardContext);
 
   const { sendRequest, isLoading, data, error, resetError } = useHttp();
@@ -51,7 +51,6 @@ const PaimentForm = () => {
   const firstProduct = cardCtx.products?.[0] ?? null;
 
   const defaultEmail = firstProduct?.info?.email || "";
-  console.log({ defaultEmail });
   const defaultAddress = firstProduct?.info?.address || "";
   const defaultCity = firstProduct?.info?.city || "";
   const defaultPostalCode = firstProduct?.info?.postalCode || "";
@@ -99,8 +98,6 @@ const PaimentForm = () => {
     resetError();
 
     //TODO:Gérer le numero de telephone côté backend
-    //TODO:Customer c'est soit nom ou raison social
-    //TODO:Adresse livraison et adresse de facturation peuvent etre differente
     const customer: Customer = {
       firstName: formData.firstName,
       lastName: formData.lastName,
