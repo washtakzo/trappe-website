@@ -19,10 +19,6 @@ const SectionResume = () => {
             key={`${product.trappe.id} ${product.width}x${product.length}`}
             product={product}
           />
-          <CartResume
-            key={`${product.trappe.id} ${product.width}x${product.length}`}
-            product={product}
-          />
         </>
       ))}
       <h3 className={styles.total}>

@@ -9,13 +9,16 @@
 }
 
 .paiment-form input,
-.paiment-form select {
+.customer-type-container select {
   border: none;
   border-bottom: 1px black solid;
   background-color: transparent;
   padding: 4px;
-  width: 100%;
   font-size: 1rem;
+}
+
+.paiment-form input {
+  width: 100%;
 }
 
 .paiment-container {
@@ -29,6 +32,13 @@
 .paiment-container p {
   margin: auto;
   text-align: center;
+}
+
+.customer-type-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 }
 
 .input-instruction {
@@ -92,7 +102,7 @@
     max-width: 18rem;
   }
   .paiment-form input,
-  .paiment-form select,
+  .customer-type-container select,
   .paiment-container p {
     font-size: 1.1rem;
   }
@@ -109,7 +119,7 @@
     margin: 2rem auto;
   }
   .paiment-form input,
-  .paiment-form select,
+  .customer-type-container select,
   .paiment-container p {
     font-size: 1.3rem;
     margin: 0.4rem 0;

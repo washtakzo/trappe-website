@@ -27,7 +27,7 @@ const SectionPaiment = () => {
 
   return (
     <Section
-      title="Paiment"
+      title="Paiement"
       style={{
         display: "flex",
         justifyContent: "center",
@@ -35,13 +35,6 @@ const SectionPaiment = () => {
       }}
       className={styles.section}
     >
-      <div className={styles["customer-type-container"]}>
-        <p>Je suis un</p>
-        <select onChange={changeCustomerTypeHandler}>
-          <option value="INDIVIDUAL">Particulier</option>
-          <option value="PROFESSIONAL">Professionnel</option>
-        </select>
-      </div>
       <PaimentForm />
     </Section>
   );
