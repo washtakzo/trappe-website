@@ -35,7 +35,21 @@ type Customer = {
   city: string;
   postalCode: number;
   email: string;
-  phoneNumber: string;
+  mainPhone: string;
+  secondaryPhone: string;
+};
+
+type FormValues = {
+  companyName: string;
+  lastName: string;
+  firstName: string;
+  email: string;
+  mainPhone: string;
+  secondaryPhone: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  paimentMethod: string;
 };
 
 type CustomerType = "INDIVIDUAL" | "PROFESSIONAL";
@@ -50,31 +64,24 @@ const PaimentForm = () => {
 
   const { sendRequest, isLoading, data, error, resetError } = useHttp();
 
-  const firstProduct = cardCtx.products?.[0] ?? null;
-
-  const defaultEmail = firstProduct?.info?.email || "";
-  const defaultAddress = firstProduct?.info?.address || "";
-  const defaultCity = firstProduct?.info?.city || "";
-  const defaultPostalCode = firstProduct?.info?.postalCode || "";
+  const defaultFormValues = {
+    companyName: "",
+    lastName: "",
+    firstName: "",
+    email: "",
+    mainPhone: "",
+    secondaryPhone: "",
+    address: "",
+    city: "",
+    postalCode: "",
+    paimentMethod: "",
+  };
 
   const {
     register,
     handleSubmit,
     reset: resetForm,
-  } = useForm({
-    defaultValues: {
-      company: "",
-      lastName: "",
-      firstName: "",
-      email: defaultEmail,
-      phoneNumber: "",
-      address: defaultAddress,
-      city: defaultCity,
-      postalCode: defaultPostalCode,
-      paimentMethod: "",
-      customerType: "PROFESSIONAL",
-    },
-  });
+  } = useForm<FormValues>({ defaultValues: defaultFormValues });
 
   const [customerType, setCustomerType] =
     React.useState<CustomerType>("PROFESSIONAL");
@@ -137,20 +144,21 @@ const PaimentForm = () => {
       city: formData.city,
       postalCode: +formData.postalCode,
       email: formData.email,
-      phoneNumber: formData.phoneNumber,
+      mainPhone: formData.mainPhone,
+      secondaryPhone: formData.secondaryPhone,
     };
 
     const orders: Orders = cardCtx.products.map((p) => {
       return {
         id: p.trappe.id,
         length: p.length,
-        method: p.info?.method || "",
+        method: p.info?.method ?? "",
         quantity: p.quantity,
         width: p.width,
         location: {
-          address: p.info?.address || "",
-          city: p.info?.city || "",
-          postalCode: p.info?.postalCode || "",
+          address: p.info?.address ?? "",
+          city: p.info?.city ?? "",
+          postalCode: p.info?.postalCode ?? "",
         },
       };
     });
@@ -160,7 +168,7 @@ const PaimentForm = () => {
       //   PayByCard(orders);
     } else if (formData.paimentMethod === PaimentMethod.TRANSFERT) {
       //TODO:uncomment
-      //   PayByTransfert(customer, orders);
+      // PayByTransfert(customer, orders);
     }
   };
 
@@ -189,7 +197,7 @@ const PaimentForm = () => {
           <input
             type="text"
             placeholder="Raison social"
-            {...register("company", { required: true })}
+            {...register("companyName", { required: true })}
           />
         )}
         <input
@@ -205,12 +213,12 @@ const PaimentForm = () => {
         <input
           type="email"
           placeholder="Email"
-          {...(register("email"), { required: true })}
+          {...register("email", { required: true })}
         />
         <input
           type="number"
           placeholder="Téléphone principale"
-          {...(register("phoneNumber"), { required: true })}
+          {...register("mainPhone", { required: true })}
         />
         <p className={styles["input-instruction"]}>
           Le numéro de téléphone est necessaire pour le livreur
@@ -219,7 +227,7 @@ const PaimentForm = () => {
         <input
           type="number"
           placeholder="Téléphone secondaire"
-          {...(register("phoneNumber"), { required: false })}
+          {...register("secondaryPhone", { required: false })}
         />
         <input
           type="text"
@@ -228,14 +236,14 @@ const PaimentForm = () => {
               ? "Adresse (siège social)"
               : "Adresse"
           }
-          {...(register("address"), { required: true })}
+          {...register("address", { required: true })}
         />
         <input
           type="text"
           placeholder={
             customerType === "PROFESSIONAL" ? "Ville (siège social)" : "Ville"
           }
-          {...(register("city"), { required: true })}
+          {...register("city", { required: true })}
         />
         <input
           type="number"
@@ -248,13 +256,6 @@ const PaimentForm = () => {
         />
         <div className={styles["paiment-container"]}>
           <p>Moyen de paiment :</p>
-          {/* <select
-          id="paiment-select"
-          {...register("paimentMethod", { required: true })}
-        >
-          <option value={PaimentMethod.CARD}>Carte bancaire</option>
-          <option value={PaimentMethod.TRANSFERT}>Virement bancaire</option>
-        </select> */}
           <div className={styles["radio-container"]}>
             <input
               style={{ "--title": "'CB'" } as React.CSSProperties}
