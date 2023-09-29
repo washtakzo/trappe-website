@@ -22,7 +22,7 @@ const SectionResume = () => {
         </>
       ))}
       <h3 className={styles.total}>
-        Total : <span>{cardCtx.totalAmount}€</span>
+        Total : <span>{cardCtx.totalAmount.toFixed(2)}€</span>
       </h3>
     </Section>
   );

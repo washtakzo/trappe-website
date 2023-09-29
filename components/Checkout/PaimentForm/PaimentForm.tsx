@@ -29,15 +29,24 @@ type Orders = {
 }[];
 
 type Customer = {
-  firstName: string;
-  lastName: string;
   address: string;
   city: string;
   postalCode: number;
   email: string;
   mainPhone: string;
   secondaryPhone: string;
-};
+  firstName: string;
+  lastName: string;
+} & (
+  | {
+      customerType: "INDIVIDUAL";
+      companyName: null;
+    }
+  | {
+      customerType: "PROFESSIONAL";
+      companyName: string;
+    }
+);
 
 type FormValues = {
   companyName: string;
@@ -57,8 +66,11 @@ type CustomerType = "INDIVIDUAL" | "PROFESSIONAL";
 const PaimentForm = () => {
   //DONE:mettre un résumer de la commande au dessus en mobile et a droite en desktop avec le total du prix
   //TODO:V2 : voir si possible de mettre adresse livraison et facturation différente sur stripe
-  //TODO:voir s'il est meilleur de faire le tableau de requapitulatif de commande dans le corps du mail plutot qu'en PDF
-  //TODO:Pré remplir les champs lors du paiement
+  //DONE:voir s'il est meilleur de faire le tableau de requapitulatif de commande dans le corps du mail plutot qu'en PDF
+
+  //DONE:Pré remplir les champs lors du paiement :
+  //https://stackoverflow.com/questions/76229874/how-to-save-shipping-address-to-fill-it-automatically-every-time-i-go-to-strip#:~:text=When%20using%20Stripe%20Checkout%2C%20it's,and%20its%20associated%20billing%20address.
+
   //DONE:2 formulaire pour pro/particulier le pro a une raison social et une adresse de facturation
   const cardCtx = useContext(CardContext);
 
@@ -113,10 +125,10 @@ const PaimentForm = () => {
   const [submitButtonHasBeenPressed, setSubmitButtonHasBeenPressed] =
     React.useState(false);
 
-  const PayByCard = (orders: Orders) => {
+  const PayByCard = (customer: Customer, orders: Orders) => {
     sendRequest(API_BASE_URL + "stripe/checkout", {
       method: "POST",
-      body: JSON.stringify(orders),
+      body: JSON.stringify({ customer, orders }),
       headers: { "Content-Type": "application/json" },
     });
   };
@@ -146,6 +158,9 @@ const PaimentForm = () => {
       email: formData.email,
       mainPhone: formData.mainPhone,
       secondaryPhone: formData.secondaryPhone,
+      customerType: customerType,
+      companyName:
+        customerType === "PROFESSIONAL" ? formData.companyName : null,
     };
 
     const orders: Orders = cardCtx.products.map((p) => {
@@ -164,11 +179,9 @@ const PaimentForm = () => {
     });
 
     if (formData.paimentMethod === PaimentMethod.CARD) {
-      //TODO:uncomment
-      //   PayByCard(orders);
+      PayByCard(customer, orders);
     } else if (formData.paimentMethod === PaimentMethod.TRANSFERT) {
-      //TODO:uncomment
-      // PayByTransfert(customer, orders);
+      PayByTransfert(customer, orders);
     }
   };
 
@@ -223,7 +236,6 @@ const PaimentForm = () => {
         <p className={styles["input-instruction"]}>
           Le numéro de téléphone est necessaire pour le livreur
         </p>
-
         <input
           type="number"
           placeholder="Téléphone secondaire"

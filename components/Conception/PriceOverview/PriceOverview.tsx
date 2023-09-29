@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "./PriceOverview.module.css";
+
+import { useForm, FieldValues } from "react-hook-form";
+
 import CustomButton from "../../UI/CustomButton/CustomButton";
 import { getTrappePrice } from "../../../utils/functions";
 import { CardContext } from "../../../store/card-context";
@@ -10,6 +13,13 @@ type Props = {
   trappeLength: number;
 };
 
+type FormValues = {
+  address: string;
+  city: string;
+  postalCode: string;
+  email: string;
+};
+
 const PriceOverview = ({ trappe, trappeWidth, trappeLength }: Props) => {
   const cardCtx = React.useContext(CardContext);
 
@@ -17,6 +27,19 @@ const PriceOverview = ({ trappe, trappeWidth, trappeLength }: Props) => {
     React.useState(true);
 
   const [isShippingSelected, setIsShippingSelected] = React.useState(false);
+
+  const defaultFormValues = {
+    address: "",
+    city: "",
+    postalCode: "",
+    email: "",
+  };
+
+  const {
+    register,
+    handleSubmit,
+    reset: resetForm,
+  } = useForm<FormValues>({ defaultValues: defaultFormValues });
 
   const [address, setAddress] = React.useState("");
   const [city, setCity] = React.useState("");
