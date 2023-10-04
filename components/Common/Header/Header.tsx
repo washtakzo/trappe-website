@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styles from "./Header.module.css";
 import Cart from "../Cart/Cart";
 import BurgerButton from "../BurgerButton/BurgerButton";
@@ -7,9 +7,18 @@ import logo from "../../../assets/best-employee.png";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import { CardContext } from "../../../store/card-context";
+import CartModal from "../CartModal/CartModal";
+
+//TODO:probleme Header arriere plant sur page conception
+
 function Header() {
   const router = useRouter();
+  const cardCtx = useContext(CardContext);
+
   const [burgerBtnIsClicked, setBurgerBtnIsClicked] = useState(false);
+
+  const dialogRef = React.useRef<HTMLDialogElement>(null);
 
   const goHome = () => {
     router.push("/");
@@ -24,32 +33,38 @@ function Header() {
     : styles["link-container"];
 
   return (
-    <header className={styles.header}>
-      <div onClick={goHome}>
-        <div className={styles["logo-container"]}>
-          <Image src={logo} alt="logo" fill />
+    <>
+      <header className={styles.header}>
+        <div onClick={goHome}>
+          <div className={styles["logo-container"]}>
+            <Image src={logo} alt="logo" fill />
+          </div>
+          <h2>Trappe Expert</h2>
         </div>
-        <h2>Trappe Expert</h2>
-      </div>
-      <ul className={linkContainerStyle}>
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          <a href="">About</a>
-        </li>
-        <li>
-          <a href="">Contact</a>
-        </li>
-      </ul>
-      <div>
-        <Cart itemCount={4} />
-        <BurgerButton
-          className={styles["burger-btn"]}
-          onClick={burgerClickHandler}
-        />
-      </div>
-    </header>
+        <ul className={linkContainerStyle}>
+          <li>
+            <Link href="/">Home</Link>
+          </li>
+          <li>
+            <a href="">About</a>
+          </li>
+          <li>
+            <a href="">Contact</a>
+          </li>
+        </ul>
+        <div>
+          <Cart
+            itemCount={cardCtx.itemsCount}
+            onClick={cardCtx.openCartDialog}
+          />
+          <BurgerButton
+            className={styles["burger-btn"]}
+            onClick={burgerClickHandler}
+          />
+        </div>
+      </header>
+      <CartModal />
+    </>
   );
 }
 

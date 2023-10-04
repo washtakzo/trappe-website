@@ -8,7 +8,7 @@ import { DUMMY_DATA } from "../../../utils/data";
 
 type Props = {
   title: string;
-  trappes: FetchedTrappe[];
+  trappes: Trappe[];
 };
 
 const ProductSelector = ({ title, trappes }: Props) => {

@@ -8,6 +8,7 @@ type Props = {
   className?: string;
   titleClassName?: string;
   contentClassName?: string;
+  style?: React.CSSProperties;
 };
 
 const Section = ({
@@ -17,9 +18,10 @@ const Section = ({
   className,
   titleClassName,
   contentClassName,
+  style,
 }: Props) => {
   return (
-    <section className={className}>
+    <section className={className} style={style}>
       <div className={styles.container}>
         <h2 className={titleClassName + " " + "section-title"}>{title}</h2>
         {subTitle && <p className="section-sub-title">{subTitle}</p>}

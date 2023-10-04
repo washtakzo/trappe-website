@@ -1,6 +1,11 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { CardContextProvider } from "../store/card-context";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <CardContextProvider>
+      <Component {...pageProps} />
+    </CardContextProvider>
+  );
 }

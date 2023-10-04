@@ -8,7 +8,7 @@ import Footer from "../components/Common/Footer/Footer";
 import SectionLivraison from "../components/Index/SectionLivraison/SectionLivraison";
 import SectionInstallation from "../components/Index/SectionInstallation/SectionInstallation";
 import SectionOutilConception from "../components/Index/SectionOutilConception/SectionOutilConception";
-import { getAllTrappes } from "../utils/http";
+import { getAllTrappes, postTrappe } from "../utils/http";
 
 export default function Home({ trappes }: { trappes: Trappe[] }) {
   return (
@@ -38,10 +38,15 @@ export default function Home({ trappes }: { trappes: Trappe[] }) {
 export const getStaticProps: GetStaticProps<{
   trappes: Trappe[];
 }> = async () => {
-  const response = await getAllTrappes();
-  const responseData = await response.json();
-  const trappes = responseData.data;
-  console.log(trappes);
+  try {
+    const trappes = await getAllTrappes();
 
-  return { props: { trappes } };
+    return { props: { trappes } };
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error.message);
+    }
+
+    return { props: { trappes: [] } };
+  }
 };

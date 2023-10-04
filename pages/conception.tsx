@@ -12,34 +12,34 @@ import { getAllTrappes } from "../utils/http";
 import { GetStaticProps } from "next";
 
 type Props = {
-  trappes: FetchedTrappe[];
+  trappes: Trappe[];
 };
 
 const Conception = ({ trappes }: Props) => {
   const router = useRouter();
   const trappeId = router.query.id;
 
-  const [selectedTrappe, setSelectedTrappe] = React.useState<FetchedTrappe>();
+  const [selectedTrappe, setSelectedTrappe] = React.useState<Trappe>();
 
   const [selectedWidth, setSelectedWidth] = React.useState<number | undefined>(
     selectedTrappe?.min_width
   );
-  const [selectedHeight, setSelectedHeight] = React.useState<
+  const [selectedLength, setSelectedLength] = React.useState<
     number | undefined
-  >(selectedTrappe?.min_height);
+  >(selectedTrappe?.min_length);
 
   /**
    * //TODO:code a ameliorer
    * tous ces artifice a cause du trappeId qui n'est pas récupéré au premier render
    * si c'était le cas, une simple constante selectedTrappe = trappes.find((trappe) => trappe.id == trappeId)
    * aurait été suffisante et les width et height par défaut aurait été aussi des simple constantes
-   * trappe.min_width & trappe.min_height
+   * trappe.min_width & trappe.min_length
    */
   React.useEffect(() => {
     const trappe = trappes.find((trappe) => trappe.id == trappeId);
     setSelectedTrappe(trappes.find((trappe) => trappe.id == trappeId));
     setSelectedWidth(trappe?.min_width);
-    setSelectedHeight(trappe?.min_height);
+    setSelectedLength(trappe?.min_length);
   }, [trappeId, trappes]);
 
   // const selectedTrappe = DUMMY_DATA.find((trappe) => trappe.id == trappeId);
@@ -49,8 +49,8 @@ const Conception = ({ trappes }: Props) => {
     setSelectedWidth(width);
   };
 
-  const changeHeightHandler = (height: number) => {
-    setSelectedHeight(height);
+  const changeLengthHandler = (height: number) => {
+    setSelectedLength(height);
   };
 
   return (
@@ -67,16 +67,16 @@ const Conception = ({ trappes }: Props) => {
           <ProductCustomizer
             trappe={selectedTrappe}
             // TODO: ameliorer le code pour éviter les ?? 0
-            //selectedWidth et selectedHeight devrait etre set directement sans confusion
+            //selectedWidth et selectedLength devrait etre set directement sans confusion
             width={selectedWidth ?? 0}
-            height={selectedHeight ?? 0}
+            length={selectedLength ?? 0}
             onChangeWidth={changeWidthHandler}
-            onChangeHeight={changeHeightHandler}
+            onChangeLength={changeLengthHandler}
           />
           <PriceOverview
             trappe={selectedTrappe}
             trappeWidth={selectedWidth ?? 0}
-            trappeHeight={selectedHeight ?? 0}
+            trappeLength={selectedLength ?? 0}
           />
         </>
       )}
@@ -92,10 +92,11 @@ export default Conception;
 export const getStaticProps: GetStaticProps<{
   trappes: Trappe[];
 }> = async () => {
-  const response = await getAllTrappes();
-  const responseData = await response.json();
-  const trappes = responseData.data;
-  console.log(trappes);
-
-  return { props: { trappes } };
+  try {
+    const trappes: Trappe[] = await getAllTrappes();
+    console.log(trappes);
+    return { props: { trappes } };
+  } catch (error) {
+    return { props: { trappes: [] } };
+  }
 };

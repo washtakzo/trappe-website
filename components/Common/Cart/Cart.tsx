@@ -4,9 +4,10 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 
 type Props = {
   itemCount?: number;
+  onClick?: () => void;
 };
 
-const Cart = ({ itemCount = 0 }: Props) => {
+const Cart = ({ itemCount = 0, onClick }: Props) => {
   const isNotificationVisible = itemCount > 0;
 
   const cartStyle = isNotificationVisible
@@ -14,7 +15,7 @@ const Cart = ({ itemCount = 0 }: Props) => {
     : styles.cart + " " + styles["no-after"];
 
   return (
-    <div className={cartStyle} content={itemCount.toString()}>
+    <div className={cartStyle} content={itemCount.toString()} onClick={onClick}>
       <HiOutlineShoppingBag className={styles.icon} />
     </div>
   );

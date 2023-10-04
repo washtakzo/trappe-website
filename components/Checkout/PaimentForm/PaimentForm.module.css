@@ -1,0 +1,135 @@
+.paiment-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 14rem;
+  margin: 1rem auto;
+}
+
+.paiment-form input,
+.customer-type-container select {
+  border: none;
+  border-bottom: 1px black solid;
+  background-color: transparent;
+  padding: 4px;
+  font-size: 1rem;
+}
+
+.paiment-form input {
+  width: 100%;
+}
+
+.paiment-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.paiment-container p {
+  margin: auto;
+  text-align: center;
+}
+
+.customer-type-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.input-instruction {
+  font-size: 0.9rem;
+  text-align: left;
+  width: 100%;
+}
+
+.radio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10%;
+}
+
+.radio-container label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px black solid;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.radio-container input {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  width: 50%;
+  aspect-ratio: 2/1;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.radio-container input:checked {
+  background-color: rgb(28, 27, 27);
+  color: white;
+}
+
+.radio-container input:before {
+  content: var(--title);
+  font-weight: 500;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*sm': '640px',*/
+@media (min-width: 640px) {
+  .paiment-form {
+    max-width: 18rem;
+  }
+  .paiment-form input,
+  .customer-type-container select,
+  .paiment-container p {
+    font-size: 1.1rem;
+  }
+}
+
+/*'md': '768px',*/
+@media (min-width: 768px) {
+}
+
+/*'lg': '1024px',*/
+@media (min-width: 1024px) {
+  .paiment-form {
+    max-width: 22rem;
+    margin: 2rem auto;
+  }
+  .paiment-form input,
+  .customer-type-container select,
+  .paiment-container p {
+    font-size: 1.3rem;
+    margin: 0.4rem 0;
+  }
+}
+
+/*'xl': '1280px',*/
+@media (min-width: 1280px) {
+}
+
+/*'2xl': '1536px',*/
+@media (min-width: 1536px) {
+}
