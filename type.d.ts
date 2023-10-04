@@ -40,7 +40,6 @@ type BuyInfo = {
   address: string;
   city: string;
   postalCode: string;
-  email: string;
   method: "installation" | "shipping";
 };
 

@@ -35,16 +35,9 @@ const PriceOverview = ({ trappe, trappeWidth, trappeLength }: Props) => {
     email: "",
   };
 
-  const {
-    register,
-    handleSubmit,
-    reset: resetForm,
-  } = useForm<FormValues>({ defaultValues: defaultFormValues });
-
-  const [address, setAddress] = React.useState("");
-  const [city, setCity] = React.useState("");
-  const [postalCode, setPostalCode] = React.useState("");
-  const [email, setEmail] = React.useState("");
+  const { register, handleSubmit } = useForm<FormValues>({
+    defaultValues: defaultFormValues,
+  });
 
   const price = getTrappePrice(trappe, trappeWidth, trappeLength);
   const option = isInstallationSelected
@@ -66,19 +59,16 @@ const PriceOverview = ({ trappe, trappeWidth, trappeLength }: Props) => {
     ? "Adresse chantier : "
     : "Adresse livraison : ";
 
-  const addProductCardHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const addProductCardHandler = (formData: FieldValues) => {
     cardCtx.addProduct({
       trappe: trappe,
       quantity: 1,
       width: trappeWidth,
       length: trappeLength,
       info: {
-        address,
-        city,
-        email,
-        postalCode,
+        address: formData.address,
+        city: formData.city,
+        postalCode: formData.postalCode,
         method: isInstallationSelected ? "installation" : "shipping",
       },
     });
@@ -89,7 +79,10 @@ const PriceOverview = ({ trappe, trappeWidth, trappeLength }: Props) => {
   return (
     <section className={styles.section}>
       <h2 className="section-title">Devis</h2>
-      <form className={styles.form} onSubmit={addProductCardHandler}>
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit(addProductCardHandler)}
+      >
         <div className={styles["radio-choice-container"]}>
           <input
             type="radio"
@@ -110,34 +103,17 @@ const PriceOverview = ({ trappe, trappeWidth, trappeLength }: Props) => {
         </div>
         <div className={styles["address-container"]}>
           <p>{addressText}</p>
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
+          <input type="text" {...register("address", { required: true })} />
         </div>
         <div className={styles["address-container"]}>
           <p>Ville</p>
-          <input
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
+          <input type="text" {...register("city", { required: true })} />
         </div>
         <div className={styles["address-container"]}>
           <p>Code postal</p>
           <input
             type="number"
-            value={postalCode}
-            onChange={(e) => setPostalCode(e.target.value)}
-          />
-        </div>
-        <div className={styles["address-container"]}>
-          <p>email</p>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            {...register("postalCode", { required: true })}
           />
         </div>
         <div className={styles["price-container"]}>
