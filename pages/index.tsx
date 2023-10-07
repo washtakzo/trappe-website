@@ -51,6 +51,7 @@ export const getStaticProps: GetStaticProps<{
 
     return { props: { trappes } };
   } catch (error) {
+    console.log("ERROR ! --------- ");
     if (error instanceof Error) {
       console.log(error.message);
     }
