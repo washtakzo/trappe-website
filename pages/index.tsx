@@ -45,6 +45,10 @@ export const getStaticProps: GetStaticProps<{
   try {
     const trappes = await getAllTrappes();
 
+    console.log("no error getAllTrappes : ");
+    console.log({ trappes });
+    console.log("no error getAllTrappes --------- ");
+
     return { props: { trappes } };
   } catch (error) {
     if (error instanceof Error) {

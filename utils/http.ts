@@ -6,7 +6,7 @@ export async function getAllTrappes() {
     try {
       const response = await fetch(API_TRAPPES_URL);
       if (!response.ok) {
-        throw new Error(response.status + " : " + response.text);
+        return reject(new Error(response.status + " : " + response.text));
       }
       const responseData = await response.json();
 
