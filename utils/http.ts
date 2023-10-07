@@ -15,7 +15,7 @@ export async function getAllTrappes() {
       const reformattedTrappes: Trappe[] = trappes.map((trappe) => {
         return {
           ...trappe,
-          prices: JSON.parse(trappe.prices),
+          // prices: JSON.parse(trappe.prices),
         };
       });
 
