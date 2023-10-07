@@ -49,20 +49,24 @@ export default function Home({
 export const getStaticProps: GetStaticProps<{
   trappes: Trappe[];
 }> = async () => {
+  let log = "";
+
   try {
     const trappes = await getAllTrappes();
 
     console.log("no error getAllTrappes : ");
     console.log({ trappes });
     console.log("no error getAllTrappes --------- ");
+    log = "NO ERROR =)";
 
-    return { props: { trappes, log: "error" } };
+    return { props: { trappes, log } };
   } catch (error) {
     console.log("ERROR ! --------- ");
     if (error instanceof Error) {
+      log = error.message;
       console.log(error.message);
     }
 
-    return { props: { trappes: [], log: "no error" } };
+    return { props: { trappes: [], log: log + " - ERROR !!" } };
   }
 };
