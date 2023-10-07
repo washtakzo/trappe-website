@@ -14,6 +14,7 @@ export default function Home({ trappes }: { trappes: Trappe[] }) {
   //TODO:TODELETE:
   console.log("test vercel : ");
   console.log(process.env.API_BASE_URL);
+  console.log({ trappes });
   return (
     <div>
       <Head>
