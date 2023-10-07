@@ -10,19 +10,19 @@ export async function getAllTrappes() {
       }
       const responseData = await response.json();
 
-      const trappes: Trappe[] = responseData.data;
+      const trappes: FetchedTrappe[] = responseData.data;
 
       //TODO:TODELETE
       // return reject(new Error("test error" + " : " + trappes[0].prices));
 
-      // const reformattedTrappes: Trappe[] = trappes.map((trappe) => {
-      //   return {
-      //     ...trappe,
-      //     prices: JSON.parse(trappe.prices),
-      //   };
-      // });
+      const reformattedTrappes: Trappe[] = trappes.map((trappe) => {
+        return {
+          ...trappe,
+          prices: JSON.parse(trappe.prices),
+        };
+      });
 
-      return resolve(trappes);
+      return resolve(reformattedTrappes);
     } catch (error) {
       return reject(error);
     }
