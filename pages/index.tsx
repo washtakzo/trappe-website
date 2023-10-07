@@ -10,11 +10,18 @@ import SectionInstallation from "../components/Index/SectionInstallation/Section
 import SectionOutilConception from "../components/Index/SectionOutilConception/SectionOutilConception";
 import { getAllTrappes, postTrappe } from "../utils/http";
 
-export default function Home({ trappes }: { trappes: Trappe[] }) {
+export default function Home({
+  trappes,
+  log,
+}: {
+  trappes: Trappe[];
+  log: string;
+}) {
   //TODO:TODELETE:
   console.log("test vercel : ");
   console.log(process.env.API_BASE_URL);
   console.log({ trappes });
+  console.log({ log });
   return (
     <div>
       <Head>
@@ -49,13 +56,13 @@ export const getStaticProps: GetStaticProps<{
     console.log({ trappes });
     console.log("no error getAllTrappes --------- ");
 
-    return { props: { trappes } };
+    return { props: { trappes, log: "error" } };
   } catch (error) {
     console.log("ERROR ! --------- ");
     if (error instanceof Error) {
       console.log(error.message);
     }
 
-    return { props: { trappes: [] } };
+    return { props: { trappes: [], log: "no error" } };
   }
 };
