@@ -19,9 +19,9 @@ export async function getAllTrappes() {
         };
       });
 
-      resolve(reformattedTrappes);
+      return resolve(reformattedTrappes);
     } catch (error) {
-      reject(error);
+      return reject(error);
     }
   });
 

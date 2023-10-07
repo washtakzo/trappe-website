@@ -11,6 +11,9 @@ import SectionOutilConception from "../components/Index/SectionOutilConception/S
 import { getAllTrappes, postTrappe } from "../utils/http";
 
 export default function Home({ trappes }: { trappes: Trappe[] }) {
+  //TODO:TODELETE:
+  console.log("test vercel : ");
+  console.log(process.env.API_BASE_URL);
   return (
     <div>
       <Head>
