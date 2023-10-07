@@ -12,10 +12,13 @@ export async function getAllTrappes() {
 
       const trappes: FetchedTrappe[] = responseData.data;
 
+      //TODO:TODELETE
+      return reject(new Error("test error" + " : " + trappes[0].prices));
+
       const reformattedTrappes: Trappe[] = trappes.map((trappe) => {
         return {
           ...trappe,
-          // prices: JSON.parse(trappe.prices),
+          prices: JSON.parse(trappe.prices),
         };
       });
 
