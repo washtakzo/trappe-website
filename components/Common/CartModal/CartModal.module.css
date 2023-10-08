@@ -1,6 +1,6 @@
 .dialog {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   max-height: none;
   max-width: none;
   background-color: hsl(var(--color-primary) / 1);
