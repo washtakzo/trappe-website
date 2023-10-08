@@ -64,15 +64,17 @@ const CartItem = ({ product }: Props) => {
           />
         </div>
       </div>
-      <div>
+      <div className={styles["cart__product__info"]}>
         <h3>{`${product.trappe.name} ${product.width}X${product.length}`}</h3>
-        <p>{method === "shipping" ? "Livraison" : "Installation sur site"}</p>
-        <p>Adresse : {address}</p>
-        <p>Ville : {city}</p>
-        <p>Code Postal : {postalCode}</p>
-        <p>Materiels : {trappePrice.toFixed(2)} €</p>
-        <p>{feeText + fee} €</p>
-        <p>Total : {totalPrice.toFixed(2)} €</p>
+        <div>
+          <p>{method === "shipping" ? "Livraison" : "Installation sur site"}</p>
+          <p>Adresse : {address}</p>
+          <p>Ville : {city}</p>
+          <p>Code Postal : {postalCode}</p>
+          <p>Materiels : {trappePrice.toFixed(2)} €</p>
+          <p>{feeText + fee} €</p>
+          <p>Total : {totalPrice.toFixed(2)} €</p>
+        </div>
       </div>
     </div>
   );
