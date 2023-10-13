@@ -33,7 +33,6 @@
 .link-container {
   list-style: none;
   display: none;
-  background-color: red;
 }
 
 .link-container > li > a {
