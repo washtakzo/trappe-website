@@ -17,11 +17,9 @@ export default function Home({
   trappes: Trappe[];
   log: string;
 }) {
-  //TODO:TODELETE:
-  console.log("test vercel : ");
-  console.log(process.env.API_BASE_URL);
-  console.log({ trappes });
-  console.log({ log });
+  //TODO:Faire une page Nos Réalisation
+  //TODO:mettre ref commande dans objet mail + ref doit etre AAMMJJXXX
+  //TODO:faire remonter info installation ou livraison sur le stripe
 
   //TODO:delete
   //TODELETE:test

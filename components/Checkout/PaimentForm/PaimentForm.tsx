@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./PaimentForm.module.css";
 import CustomButton from "../../UI/CustomButton/CustomButton";
 import { useContext } from "react";
+import { useRouter } from "next/router";
 
 import { useForm, FieldValues } from "react-hook-form";
 
@@ -73,6 +74,8 @@ const PaimentForm = () => {
 
   const { sendRequest, isLoading, data, error, resetError } = useHttp();
 
+  const router = useRouter();
+
   const defaultFormValues = {
     companyName: "",
     lastName: "",
@@ -94,6 +97,10 @@ const PaimentForm = () => {
 
   const [customerType, setCustomerType] =
     React.useState<CustomerType>("PROFESSIONAL");
+
+  const goSuccessPageMail = React.useCallback(() => {
+    router.push("/success?type=mail");
+  }, [router]);
 
   const changeCustomerTypeHandler = (
     e: React.ChangeEvent<HTMLSelectElement>
@@ -187,7 +194,11 @@ const PaimentForm = () => {
     if (data.url) {
       window.open(data.url);
     }
-  }, [data]);
+
+    if (data.message.includes("Email")) {
+      goSuccessPageMail();
+    }
+  }, [data, error, goSuccessPageMail]);
 
   return (
     <>
