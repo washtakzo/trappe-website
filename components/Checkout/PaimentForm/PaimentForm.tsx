@@ -195,7 +195,7 @@ const PaimentForm = () => {
       window.open(data.url);
     }
 
-    if (data.message.includes("Email")) {
+    if (data?.message.includes("Email")) {
       goSuccessPageMail();
     }
   }, [data, error, goSuccessPageMail]);
