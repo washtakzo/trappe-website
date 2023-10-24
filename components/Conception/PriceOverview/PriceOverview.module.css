@@ -6,9 +6,13 @@
 }
 
 .form {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+  justify-content: flex-start;
   margin: auto;
   padding: 1rem 0;
+  min-width: 280px;
 }
 
 .radio-choice-container {
@@ -16,7 +20,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
-  width: 220px;
+  width: 80%;
   margin: 0.4rem auto;
 }
 
@@ -24,12 +28,21 @@
   accent-color: hsl(var(--color-secondary));
 }
 
+.form input {
+  /* all: unset; */
+  border: none;
+  border-bottom: 1px hsl(var(--color-secondary)) solid;
+  padding: 4px;
+  background-color: hsl(var(--color-primary));
+  margin-left: 1rem;
+}
+
 .address-container {
   display: flex;
-  width: 300px;
   justify-content: space-between;
   align-items: center;
-  margin: 0.8rem auto;
+  margin: 0.4em 0;
+  width: 100%;
 }
 
 .price-container > h3 {
@@ -44,4 +57,44 @@
   margin: auto;
   background-color: hsl(var(--color-secondary));
   color: hsl(var(--color-primary));
+  margin-top: 1rem;
+}
+
+/*sm': '640px',*/
+@media (min-width: 640px) {
+  .form {
+  }
+  .form p,
+  .form input {
+    font-size: 1.2rem;
+  }
+  .price-container > h3 {
+    font-size: 1.4rem;
+  }
+}
+
+/*'md': '768px',*/
+@media (min-width: 768px) {
+}
+
+/*'lg': '1024px',*/
+@media (min-width: 1024px) {
+  .form {
+    gap: 0.6em;
+  }
+  .form p,
+  .form input {
+    font-size: 1.4rem;
+  }
+  .price-container > h3 {
+    font-size: 1.6rem;
+  }
+}
+
+/*'xl': '1280px',*/
+@media (min-width: 1280px) {
+}
+
+/*'2xl': '1536px',*/
+@media (min-width: 1536px) {
 }
