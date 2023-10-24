@@ -18,8 +18,6 @@ export default function Home({
   log: string;
 }) {
   //TODO:Faire une page Nos Réalisation
-  //TODO:mettre ref commande dans objet mail + ref doit etre AAMMJJXXX
-  //TODO:faire remonter info installation ou livraison sur le stripe
 
   //TODELETE:test
   const postTrappeHandler = () => {
