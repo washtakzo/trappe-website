@@ -29,7 +29,7 @@ const Conception = ({ trappes }: Props) => {
   >(selectedTrappe?.min_length);
 
   /**
-   * //TODO:code a ameliorer
+   * //FIXME:code a ameliorer
    * tous ces artifice a cause du trappeId qui n'est pas récupéré au premier render
    * si c'était le cas, une simple constante selectedTrappe = trappes.find((trappe) => trappe.id == trappeId)
    * aurait été suffisante et les width et height par défaut aurait été aussi des simple constantes
@@ -66,7 +66,7 @@ const Conception = ({ trappes }: Props) => {
           />
           <ProductCustomizer
             trappe={selectedTrappe}
-            // TODO: ameliorer le code pour éviter les ?? 0
+            // FIXME: ameliorer le code pour éviter les ?? 0
             //selectedWidth et selectedLength devrait etre set directement sans confusion
             width={selectedWidth ?? 0}
             length={selectedLength ?? 0}

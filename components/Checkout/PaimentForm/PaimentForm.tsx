@@ -65,11 +65,6 @@ type FormValues = {
 type CustomerType = "INDIVIDUAL" | "PROFESSIONAL";
 
 const PaimentForm = () => {
-  //DONE:mettre un résumer de la commande au dessus en mobile et a droite en desktop avec le total du prix
-  //DONE:voir s'il est meilleur de faire le tableau de requapitulatif de commande dans le corps du mail plutot qu'en PDF
-  //DONE:Pré remplir les champs lors du paiement :
-  //https://stackoverflow.com/questions/76229874/how-to-save-shipping-address-to-fill-it-automatically-every-time-i-go-to-strip#:~:text=When%20using%20Stripe%20Checkout%2C%20it's,and%20its%20associated%20billing%20address.
-  //DONE:2 formulaire pour pro/particulier le pro a une raison social et une adresse de facturation
   const cardCtx = useContext(CardContext);
 
   const { sendRequest, isLoading, data, error, resetError } = useHttp();

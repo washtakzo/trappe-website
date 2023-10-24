@@ -21,7 +21,6 @@ export default function Home({
   //TODO:mettre ref commande dans objet mail + ref doit etre AAMMJJXXX
   //TODO:faire remonter info installation ou livraison sur le stripe
 
-  //TODO:delete
   //TODELETE:test
   const postTrappeHandler = () => {
     const trappeToPost = {
@@ -60,7 +59,7 @@ export default function Home({
       </Head>
 
       <main>
-        <button onClick={postTrappeHandler}>POST TRAPPE</button>
+        {/* <button onClick={postTrappeHandler}>POST TRAPPE DEV BUTTON</button> */}
         <Header />
         <SectionIntroduction />
         <SectionMainProducts trappes={trappes} />

@@ -10,8 +10,6 @@ import { useRouter } from "next/router";
 import { CardContext } from "../../../store/card-context";
 import CartModal from "../CartModal/CartModal";
 
-//TODO:probleme Header arriere plant sur page conception
-
 function Header() {
   const router = useRouter();
   const cardCtx = useContext(CardContext);
