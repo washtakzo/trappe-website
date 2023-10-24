@@ -1,6 +1,13 @@
+.section {
+}
+
 .container {
   width: 80%;
   margin: auto;
+}
+
+.content {
+  min-height: 600px;
 }
 
 /*sm': '640px',*/

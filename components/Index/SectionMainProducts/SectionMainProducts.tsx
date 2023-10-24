@@ -14,10 +14,7 @@ const SectionMainProducts = ({ trappes }: { trappes: Trappe[] }) => {
   };
 
   return (
-    <Section
-      title="What is included in Coworking Z"
-      contentClassName={styles.content}
-    >
+    <Section title="Nos Trappes" contentClassName={styles.content}>
       {trappes.map((trappe) => (
         <ProductOverview
           key={trappe.id}

@@ -1,6 +1,3 @@
-.section {
-}
-
 .grid {
   display: grid;
   grid-template-columns: 100%;
@@ -12,12 +9,17 @@
 .grid__element {
   width: 16rem;
   /* background-color: aqua; */
-  margin: 1rem auto;
+  /* margin: 1rem auto; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
 }
 
 .icon__container {
   width: 6rem;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .icon {
@@ -47,6 +49,9 @@
     grid-template-rows: 50% 50%;
     /* background-color: red; */
     padding: 2rem 0;
+  }
+  .grid__element {
+    margin: 4rem 0;
   }
 }
 

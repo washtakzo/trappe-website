@@ -11,31 +11,43 @@ const SectionLivraison = () => {
       title="Livraison"
       subTitle="Nos différents modes de livraison"
       className={"background-secondary-50"}
+      contentStyle={{
+        display: "flex",
+        justifyContent: "space-around",
+      }}
     >
-      <div className={styles.grid}>
-        <div className={styles["grid__element"]}>
-          <div className={styles["icon__container"]}>
-            <FiPackage className={styles["icon"]} />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div className={styles.grid}>
+          <div className={styles["grid__element"]}>
+            <div className={styles["icon__container"]}>
+              <FiPackage className={styles["icon"]} />
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-        </div>
-        <div className={styles["grid__element"]}>
-          <div className={styles["icon__container"]}>
-            <FiTruck className={styles["icon"]} />
+          <div className={styles["grid__element"]}>
+            <div className={styles["icon__container"]}>
+              <FiTruck className={styles["icon"]} />
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-        </div>
-        <div className={styles["grid__element"]}>
-          <div className={styles["icon__container"]}>
-            <BiTimer className={styles["icon"]} />
+          <div className={styles["grid__element"]}>
+            <div className={styles["icon__container"]}>
+              <BiTimer className={styles["icon"]} />
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-        </div>
-        <div className={styles["grid__element"]}>
-          <div className={styles["icon__container"]}>
-            <GiFrance className={styles["icon"]} />
+          <div className={styles["grid__element"]}>
+            <div className={styles["icon__container"]}>
+              <GiFrance className={styles["icon"]} />
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
           </div>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
         </div>
       </div>
     </Section>

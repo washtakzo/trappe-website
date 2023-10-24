@@ -21,7 +21,10 @@ const SectionOutilConception = () => {
       titleClassName={styles.title}
     >
       <Image
-        src={illustration}
+        src={
+          "https://www.hsph.harvard.edu/ecpe/wp-content/uploads/sites/2020/2022/03/WHWO22-Article-Cover-Photo-2.png" ??
+          illustration
+        }
         alt="outil de conception"
         fill
         className={styles.image}

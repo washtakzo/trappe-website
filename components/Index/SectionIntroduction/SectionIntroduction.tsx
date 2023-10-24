@@ -14,7 +14,10 @@ const SectionIntroduction = () => {
         <div className={styles["image-container"]}>
           <div className={styles["gradient-background"]} />
           <Image
-            src={illustrationSmile}
+            src={
+              "https://alis.alberta.ca/media/699261/worker-safety-vest-distribution-centre-istock-1168523877.jpg?cc=0,0.18979370249728555,0,0.050162866449511484&width=1380&height=700&rnd=132616814907730000" ??
+              illustrationSmile
+            }
             alt="illustration"
             fill
             className={styles.image}

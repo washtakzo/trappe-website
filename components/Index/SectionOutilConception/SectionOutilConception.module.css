@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   min-height: 400px;
 }
 
@@ -32,7 +33,7 @@
     height: 600px;
   }
   .content > p {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
   .button {
     margin: 0 auto;
@@ -49,7 +50,8 @@
     height: 800px;
   }
   .content > p {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    max-width: 70%;
   }
 }
 

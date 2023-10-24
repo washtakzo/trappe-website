@@ -182,7 +182,7 @@ body {
 /* specific class */
 .section-title {
   padding: 1rem 0;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   text-align: center;
   color: hsl(var(--color-secondary));
 }
@@ -195,7 +195,7 @@ body {
 /*sm': '640px',*/
 @media (min-width: 640px) {
   .section-title {
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
   .section-sub-title {
     font-size: 1.2rem;
@@ -206,7 +206,7 @@ body {
 @media (min-width: 768px) {
   .section-title {
     padding: 1.4rem 0;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
   .section-sub-title {
     font-size: 1.4rem;
@@ -216,14 +216,14 @@ body {
 /*'lg': '1024px',*/
 @media (min-width: 1024px) {
   .section-title {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
   }
 }
 
 /*'xl': '1280px',*/
 @media (min-width: 1280px) {
   .section-title {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
   }
 }
 

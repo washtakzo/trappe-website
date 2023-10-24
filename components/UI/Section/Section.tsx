@@ -9,6 +9,7 @@ type Props = {
   titleClassName?: string;
   contentClassName?: string;
   style?: React.CSSProperties;
+  contentStyle?: React.CSSProperties;
 };
 
 const Section = ({
@@ -19,13 +20,19 @@ const Section = ({
   titleClassName,
   contentClassName,
   style,
+  contentStyle,
 }: Props) => {
   return (
-    <section className={className} style={style}>
+    <section className={styles.section + " " + className} style={style}>
       <div className={styles.container}>
         <h2 className={titleClassName + " " + "section-title"}>{title}</h2>
         {subTitle && <p className="section-sub-title">{subTitle}</p>}
-        <div className={contentClassName}>{children}</div>
+        <div
+          className={styles.content + " " + contentClassName}
+          style={contentStyle}
+        >
+          {children}
+        </div>
       </div>
     </section>
   );
